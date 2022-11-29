@@ -55,7 +55,7 @@ const ReportStackNavigator = () => {
 
 const CopyprivacyStackNavigator = () => {
     return (
-        <Stack.Navigator screenOptions={stackOptions}>
+        <Stack.Navigator  screenOptions={stackOptions}>
             <Stack.Screen name="CopyNavigator" component={CopyrightScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     );

@@ -5,11 +5,12 @@ import React from 'react';
 import DrawerNavigator from './navigation/DrawerNavigator';
 
 export default function App() {
-  return (
+  return (<>
+    <StatusBar style="light" />
     <NavigationContainer>
       <DrawerNavigator></DrawerNavigator>
     </NavigationContainer>
-  );
+  </>);
 }
 
 const styles = StyleSheet.create({
