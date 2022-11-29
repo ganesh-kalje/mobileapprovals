@@ -1,21 +1,28 @@
-import { Text, View, Button, StyleSheet  } from 'react-native';
+import React from "react";
+import { View, ScrollView, SafeAreaView } from "react-native";
+import Filter from '../component/Home/Filter';
+import NotificationCard from "../component/Home/NotificationCard";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
     return (
-        <View style={styles.center}>
-            <Text>This is the home screen</Text>
-            <Button title="Go to Report Screen"  onPress={() => navigation.navigate("Report")}  />
-        </View>
+        <>
+            <Filter></Filter>
+            <View>
+                <SafeAreaView>
+                    <ScrollView>
+                        <NotificationCard mapKey={'apinvapr'} displayCount={'10'}></NotificationCard>
+                        <NotificationCard mapKey={'pabudwf'} displayCount={'9'}></NotificationCard>
+                        <NotificationCard mapKey={'poreqcha'} displayCount={'8'}></NotificationCard>
+                        <NotificationCard mapKey={'apexp'} displayCount={'7'}></NotificationCard>
+                        <NotificationCard mapKey={'reqapprv'} displayCount={'6'}></NotificationCard>
+                        <NotificationCard mapKey={'xxcmstoc'} displayCount={'5'}></NotificationCard>
+                        <NotificationCard mapKey={'xxcmstra'} displayCount={'4'}></NotificationCard>
+                        <NotificationCard mapKey={'porpocha'} displayCount={'3'}></NotificationCard>
+                        <NotificationCard mapKey={'cmappr'} displayCount={'2'}></NotificationCard>
+                    </ScrollView>
+                </SafeAreaView>
+            </View>
+        </>
     );
 }
-
-const styles = StyleSheet.create({
-    center: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-    },
-});
-
 export default HomeScreen;

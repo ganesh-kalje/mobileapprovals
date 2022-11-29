@@ -6,7 +6,7 @@ import DrawerNavigator from './navigation/DrawerNavigator';
 
 export default function App() {
   return (<>
-    <StatusBar style="light" />
+    <StatusBar style="auto" />
     <NavigationContainer>
       <DrawerNavigator></DrawerNavigator>
     </NavigationContainer>
