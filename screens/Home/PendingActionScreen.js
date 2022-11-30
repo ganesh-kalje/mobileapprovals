@@ -22,12 +22,13 @@ const PendingActionScreen = () => {
         </View>
         <SafeAreaView>
             <ScrollView>
-                <Pressable onPress={() => navigate.navigate("HomeNavigator")}><RenderCard></RenderCard></Pressable>
-                <Pressable onPress={() => navigate.navigate("HomeNavigator")}><RenderCard></RenderCard></Pressable>
-                <RenderCard></RenderCard>
-                <RenderCard></RenderCard>
-                <RenderCard></RenderCard>
-                <RenderCard></RenderCard>
+                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
+                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
+                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
+                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
+                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
+                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
+                
             </ScrollView>
         </SafeAreaView>
 

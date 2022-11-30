@@ -8,6 +8,7 @@ import CopyrightScreen from "../screens/CopyrightScreen";
 import HelpScreen from "../screens/HelpScreen";
 import LogoutScreen from "../screens/LogoutScreen";
 import PendingActionScreen from "../screens/Home/PendingActionScreen";
+import NotificationDetailsScreen from "../screens/Home/NotificationDetailsScreen";
 import { useNavigation } from '@react-navigation/native';
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ const MainStackNavigator = () => {
         <Stack.Navigator screenOptions={stackOptions}>
             <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="NotificationDetails" component={NotificationDetailsScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
