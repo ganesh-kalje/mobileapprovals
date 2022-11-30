@@ -7,7 +7,8 @@ import DelegationRuleScreen from "../screens/DelegationRuleScreen";
 import CopyrightScreen from "../screens/CopyrightScreen";
 import HelpScreen from "../screens/HelpScreen";
 import LogoutScreen from "../screens/LogoutScreen";
-
+import PendingActionScreen from "../screens/Home/PendingActionScreen";
+import { useNavigation } from '@react-navigation/native';
 const Stack = createNativeStackNavigator();
 
 
@@ -22,9 +23,12 @@ const stackOptions = {
 };
 
 const MainStackNavigator = () => {
+    const navigate = useNavigation();
+    console.log('stack focused' , navigate.isFocused())
     return (
         <Stack.Navigator screenOptions={stackOptions}>
             <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }

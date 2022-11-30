@@ -2,12 +2,16 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { CopyprivacyStackNavigator, LogoutStackNavigator, HelpStackNavigator } from "./StackNavigator";
 import TabNavigator from "./TabNavigator";
-import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
+    const navigate = useNavigation();
+    console.log('drwaer focused ' , navigate.isFocused())
+
     return (
         <Drawer.Navigator screenOptions={{
             headerStyle: { backgroundColor: '#00619a' },
@@ -32,7 +36,7 @@ const DrawerNavigator = () => {
             }} />
 
             <Drawer.Screen name="Copyright&Privacy" component={CopyprivacyStackNavigator} options={{
-                headerShown: true,
+                headerShown: false,
                 title: 'CopyRight & Privacy',
                 drawerIcon: () => (
                     <Image source={require('../assets/images/copyright_icon_active.png')}

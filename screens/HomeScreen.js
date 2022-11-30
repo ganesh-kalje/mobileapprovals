@@ -3,7 +3,7 @@ import { View, ScrollView, SafeAreaView } from "react-native";
 import Filter from '../component/Home/Filter';
 import NotificationCard from "../component/Home/NotificationCard";
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     return (
         <>
             <Filter></Filter>

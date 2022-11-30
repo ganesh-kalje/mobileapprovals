@@ -25,7 +25,7 @@ const BottomTabNavigator = () => {
             }} />
 
             <Tab.Screen name="DelegationRule" component={DelegationRuleNavigator} options={{
-                headerShown: false, title: 'Delegation Rules',
+                headerShown: true, title: 'Delegation Rules',
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Delegationactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}
@@ -37,7 +37,7 @@ const BottomTabNavigator = () => {
 
 
             <Tab.Screen name="Report" component={ReportStackNavigator} options={{
-                headerShown: false, title: 'Report',
+                headerShown: true, title: 'Report',
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Reportactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}
@@ -48,7 +48,7 @@ const BottomTabNavigator = () => {
             }} />
 
             <Tab.Screen name="Search" component={SearchStackNavigator} options={{
-                headerShown: false, title: 'Search',
+                headerShown: true, title: 'Search',
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Searchactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}

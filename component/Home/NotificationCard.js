@@ -1,53 +1,50 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-const NotificationCard = ({mapKey, displayCount}) => {
-
+const NotificationCard = ({ mapKey, displayCount }) => {
+    const navigate = useNavigation();
     const kvArray = [['apinvapr', {
-        source: require('../assets/images/APinvoice.png'), 
+        source: require('../../assets/images/APinvoice.png'),
         style: { width: 45, height: 50 },
         title: 'AP Invoice'
     }], ['pabudwf', {
-        source: require('../assets/images/car1.png'), 
+        source: require('../../assets/images/car1.png'),
         style: { width: 40, height: 50 },
         title: 'Car Approval'
     }], ['poreqcha', {
-        source: require('../assets/images/Change.png'), 
+        source: require('../../assets/images/Change.png'),
         style: { width: 45, height: 50 },
         title: 'Change Request(s)'
     }], ['apexp', {
-        source: require('../assets/images/expense.png'), 
+        source: require('../../assets/images/expense.png'),
         style: { width: 45, height: 50 },
         title: 'Expenses'
     }], ['reqapprv', {
-        source: require('../assets/images/Requisition.png'), 
+        source: require('../../assets/images/Requisition.png'),
         style: { width: 40, height: 50 },
         title: 'Requisition'
     }], ['xxcmstoc', {
-        source: require('../assets/images/onecard.png'), 
+        source: require('../../assets/images/onecard.png'),
         style: { width: 45, height: 50 },
         title: 'OneCard'
-    }],['xxcmstra', {
-        source: require('../assets/images/finsys.png'), 
+    }], ['xxcmstra', {
+        source: require('../../assets/images/finsys.png'),
         style: { width: 45, height: 50 },
         title: 'finsys'
     }], ['porpocha', {
-        source: require('../assets/images/PO.png'), 
+        source: require('../../assets/images/PO.png'),
         style: { width: 45, height: 50 },
         title: 'PO'
     }], ['cmappr', {
-        source: require('../assets/images/CM_App_icon.png'), 
+        source: require('../../assets/images/CM_App_icon.png'),
         style: { width: 45, height: 50 },
         title: 'CM'
     }]];
 
     const notificationMap = new Map(kvArray);
-    
-    
 
-       
-
-    return <View style={[styles.card, styles.shadowProp]} >
+    return <Pressable onPress={() => navigate.navigate("PendingAction")}><View style={[styles.card, styles.shadowProp]} >
         <View style={styles.infoSpan}>
             <Image source={notificationMap.get(mapKey).source}
                 fadeDuration={0} style={notificationMap.get(mapKey).style}></Image>
@@ -60,7 +57,7 @@ const NotificationCard = ({mapKey, displayCount}) => {
         </View>
 
         <View style={styles.styleDivider}></View>
-    </View>
+    </View></Pressable>
 }
 
 const styles = StyleSheet.create({

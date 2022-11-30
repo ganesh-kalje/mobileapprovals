@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 69 69" width="60px" height="60px" preserveAspectRatio="xMinYMid" style="enable-background:new 0 0 69 69;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{fill:#fff;stroke:#fff;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:10;}
+	.st5{fill:#fff;}
+	.st6{fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:10;}
+	.st7{fill:none;stroke:#fff;stroke-width:2;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1_1_" class="st0">
+	<g class="st1">
+		<g>
+			<path class="st2" d="M29.8,31h1v18h-1V31z"/>
+			<path class="st2" d="M39.8,31h1v18h-1V31z"/>
+			<path class="st2" d="M34.8,31h1v18h-1V31z"/>
+		</g>
+		<path class="st3" d="M27.8,13.6h14v6h-14V13.6z"/>
+		<path class="st3" d="M19.8,19.6h30v6h-30V19.6z"/>
+		<path class="st3" d="M21.8,25.6h26l-2,30h-22L21.8,25.6z"/>
+		<g>
+			<g>
+				<circle class="st4" cx="34.5" cy="34.5" r="32.9"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="Layer_2" class="st0">
+	<g class="st1">
+		<g>
+			<g>
+				<path class="st5" d="M14.7,45.2h-2V25c0-5,2-7,7-7h16c5,0,7,2,7,7v20h-2V25c0-3.9-1.1-5-5-5h-16c-3.9,0-5,1.1-5,5
+					C14.7,25,14.7,45.2,14.7,45.2z"/>
+			</g>
+			<g>
+				<path class="st5" d="M24.7,52c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S28,52,24.7,52z M24.7,42c-2.2,0-4,1.8-4,4s1.8,4,4,4
+					s4-1.8,4-4S26.9,42,24.7,42z"/>
+			</g>
+			<g>
+				<path class="st5" d="M48.7,52c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S52,52,48.7,52z M48.7,42c-2.2,0-4,1.8-4,4s1.8,4,4,4
+					s4-1.8,4-4S50.9,42,48.7,42z"/>
+			</g>
+			<g>
+				<path class="st5" d="M53.6,38H40.7v-8h7.5L53.6,38z M42.7,36h7.1l-2.7-4h-4.5v4H42.7z"/>
+			</g>
+			<g>
+				<path class="st5" d="M58.7,45.5h-6v-2h4v-6.7l-5.6-9.3h-9.4v-2h10.6l6.4,10.7C58.7,36.2,58.7,45.5,58.7,45.5z M43.7,45.5H29.5
+					v-2h14.2V45.5z M20.3,45.5h-9v-2h9V45.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<circle class="st6" cx="34.5" cy="34.5" r="32.9"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="Layer_3">
+	<g>
+		<g>
+			<circle class="st7" cx="34.5" cy="34.5" r="32.9"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon class="st7" points="19.1,16.8 31,33.3 31,52.2 38,45.1 38,33.3 49.9,16.8 		"/>
+	</g>
+</g>
+</svg>
