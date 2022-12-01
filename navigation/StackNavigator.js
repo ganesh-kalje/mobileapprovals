@@ -26,22 +26,20 @@ const stackOptions = {
     drawerContentStyle: { backgroundColor: '#00619a' },
     drawerActiveBackgroundColor: '#00619a',
     drawerStyle: {
-     
-      backgroundColor: '#00619a',
-      
-      width: 240,
+        backgroundColor: '#00619a',
+        width: 240,
     },
-  };
+};
 
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={stackOptions}>
-            <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: true, headerLeft: HeaderLeftBar, title: 'Home' }} />
-            <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: true, title: 'Pending Action' }} />
-            <Stack.Screen name="NotificationDetails" component={NotificationDetailsScreen} options={{ headerShown: true, title: 'Notification Details' }} />
-            <Stack.Screen name="Lines" component={LinesScreen} options={{ headerShown: true, title: 'Lines' }} />
-            <Stack.Screen name="ActionHistory" component={ActionHistoryScreen} options={{ headerShown: true, title: 'Action History' }} />
-            <Stack.Screen name="Attachment" component={AttachmentScreen} options={{ headerShown: true, title: 'Attachments' }} />
+            <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: true, headerLeft: HeaderLeftBar, title: 'Home', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: true, title: 'Pending Action', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="NotificationDetails" component={NotificationDetailsScreen} options={{ headerShown: true, title: 'Notification Details', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="Lines" component={LinesScreen} options={{ headerShown: true, title: 'Lines', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="ActionHistory" component={ActionHistoryScreen} options={{ headerShown: true, title: 'Action History', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="Attachment" component={AttachmentScreen} options={{ headerShown: true, title: 'Attachments', headerTitleAlign: 'center' }} />
         </Stack.Navigator>
     );
 }
