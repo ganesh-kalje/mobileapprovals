@@ -9,28 +9,39 @@ import HelpScreen from "../screens/HelpScreen";
 import LogoutScreen from "../screens/LogoutScreen";
 import PendingActionScreen from "../screens/Home/PendingActionScreen";
 import NotificationDetailsScreen from "../screens/Home/NotificationDetailsScreen";
-import { useNavigation } from '@react-navigation/native';
+import LinesScreen from "../screens/Home/LinesScreen";
+import ActionHistoryScreen from "../screens/Home/ActionHistoryScreen";
+import AttachmentScreen from "../screens/Home/AttachmentScreen";
+import HeaderLeftBar from "../component/UI/HeaderLeftSection";
+
+
 const Stack = createNativeStackNavigator();
 
 
 const stackOptions = {
-    headerStyle: {
-        backgroundColor: "#9AC4F8",
+    headerStyle: { backgroundColor: '#00619a' },
+    headerTintColor: 'white',
+    drawerActiveTintColor: '#fff',
+    drawerInactiveTintColor: '#fff',
+    drawerContentStyle: { backgroundColor: '#00619a' },
+    drawerActiveBackgroundColor: '#00619a',
+    drawerStyle: {
+     
+      backgroundColor: '#00619a',
+      
+      width: 240,
     },
-    headerTintColor: "white",
-    headerBackTitle: "Back",
-
-
-};
+  };
 
 const MainStackNavigator = () => {
-    const navigate = useNavigation();
-    console.log('stack focused' , navigate.isFocused())
     return (
         <Stack.Navigator screenOptions={stackOptions}>
-            <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: false }} />
-            <Stack.Screen name="NotificationDetails" component={NotificationDetailsScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: true, headerLeft: HeaderLeftBar, title: 'Home' }} />
+            <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: true, title: 'Pending Action' }} />
+            <Stack.Screen name="NotificationDetails" component={NotificationDetailsScreen} options={{ headerShown: true, title: 'Notification Details' }} />
+            <Stack.Screen name="Lines" component={LinesScreen} options={{ headerShown: true, title: 'Lines' }} />
+            <Stack.Screen name="ActionHistory" component={ActionHistoryScreen} options={{ headerShown: true, title: 'Action History' }} />
+            <Stack.Screen name="Attachment" component={AttachmentScreen} options={{ headerShown: true, title: 'Attachments' }} />
         </Stack.Navigator>
     );
 }

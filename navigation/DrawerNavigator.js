@@ -28,7 +28,7 @@ const DrawerNavigator = () => {
             },
           }}>
             <Drawer.Screen name="HomeDrwa" component={TabNavigator} options={{
-                drawerItemStyle: { borderColor: 'red'}, headerShown: true, title: 'Home', drawerIcon: () => (
+                drawerItemStyle: { borderColor: 'red'}, headerShown: false, title: 'Home', drawerIcon: () => (
                     <Image source={require('../assets/images/home_icon_active.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}
                     />
@@ -36,7 +36,7 @@ const DrawerNavigator = () => {
             }} />
 
             <Drawer.Screen name="Copyright&Privacy" component={CopyprivacyStackNavigator} options={{
-                headerShown: false,
+                headerShown: true,
                 title: 'CopyRight & Privacy',
                 drawerIcon: () => (
                     <Image source={require('../assets/images/copyright_icon_active.png')}

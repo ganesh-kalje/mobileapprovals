@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { AntDesign } from '@expo/vector-icons'; 
-
+import { useNavigation } from '@react-navigation/native';
 const NotificationDetailsScreen = () => {
+    const navigate = useNavigation();
+
     return <View style={[styles.card, styles.shadowProp]}>
         <Text style={styles.mainHeader}>INV44525</Text>
         <Text style={styles.descriptionSpan}>Lorem Ipsum is simply dummy text of the printing and 
@@ -20,18 +22,26 @@ const NotificationDetailsScreen = () => {
             <Text style={styles.descriptionSpan}>02-Sep-2022</Text>
         </View>
 
-        <View style={styles.actionLink}>
-            <Text style={styles.actionLinkText}>Lines</Text>
-            <AntDesign style={styles.arrowIcon} name="right" size={15} color="#2b9cd8" />
-        </View>
-        <View style={styles.actionLink}>
-            <Text style={styles.actionLinkText}>Action History</Text>
-            <AntDesign style={styles.arrowIcon} name="right" size={15} color="#2b9cd8" />
-        </View>
-        <View style={styles.actionLink}>
-            <Text style={styles.actionLinkText}>Attachments</Text>
-            <AntDesign style={styles.arrowIcon} name="right" size={15} color="#2b9cd8" />
-        </View>
+        <Pressable onPress={() => navigate.navigate("Lines")}>
+            <View style={styles.actionLink}>
+                <Text style={styles.actionLinkText}>Lines</Text>
+                <AntDesign style={styles.arrowIcon} name="right" size={15} color="#2b9cd8" />
+            </View>
+        </Pressable>
+
+        <Pressable onPress={() => navigate.navigate("ActionHistory")}>
+            <View style={styles.actionLink}>
+                <Text style={styles.actionLinkText}>Action History</Text>
+                <AntDesign style={styles.arrowIcon} name="right" size={15} color="#2b9cd8" />
+            </View>
+        </Pressable>
+
+        <Pressable onPress={() => navigate.navigate("Attachment")}>
+            <View style={styles.actionLink}>
+                <Text style={styles.actionLinkText}>Attachments</Text>
+                <AntDesign style={styles.arrowIcon} name="right" size={15} color="#2b9cd8" />
+            </View>
+        </Pressable>
 
         <View style={styles.bottomContainer}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
