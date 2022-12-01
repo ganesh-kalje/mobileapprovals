@@ -1,15 +1,12 @@
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import NotificationHeader from "../../component/Home/NotificationHeader";
 const NotificationDetailsScreen = () => {
     const navigate = useNavigation();
 
     return <View style={[styles.card, styles.shadowProp]}>
-        <Text style={styles.mainHeader}>INV44525</Text>
-        <Text style={styles.descriptionSpan}>Lorem Ipsum is simply dummy text of the printing and 
-            typesetting industry. Lorem Ipsum has been the industry's
-        standard dummy text ever since the 1500s,</Text>
-        <View style={styles.separator}></View>
+        <NotificationHeader></NotificationHeader>
 
         <View style={{ paddingTop: 5, borderBottomWidth: 1, borderColor: '#dde3e6' }}>
             <Text style={styles.mainHeader}>INV44525</Text>
@@ -152,9 +149,5 @@ const styles = StyleSheet.create({
     btnMoreInfo: {
         color: '#FFA700',
     }
-    
-
-
-   
 });
 export default NotificationDetailsScreen;
