@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import NotificationHeader from "../../component/Home/NotificationHeader";
+import Actions from "../../component/Home/Actions";
 const NotificationDetailsScreen = () => {
     const navigate = useNavigation();
 
@@ -40,33 +41,7 @@ const NotificationDetailsScreen = () => {
             </View>
         </Pressable>
 
-        <View style={styles.bottomContainer}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                <Pressable android_ripple={styles.btnApr} onPress={() => { }} style={{ flexDirection: 'row'}}>
-                    <Image source={require('./../../assets/images/approved_1.png')}
-                        fadeDuration={0} style={styles.actionIcon}></Image>
-                    <Text style={[styles.button, styles.btnApr]}>Approve</Text>
-                </Pressable>
-
-                <Pressable android_ripple={styles.btnRjt} onPress={() => { }} style={{ flexDirection: 'row' }}>
-                    <Image source={require('./../../assets/images/reject_1.png')}
-                        fadeDuration={0} style={styles.actionIcon}></Image>
-                    <Text style={[styles.button, styles.btnRjt]}>Reject</Text>
-                </Pressable>
-
-                <Pressable android_ripple={styles.btnReassing} onPress={() => { }} style={{ flexDirection: 'row' }}>
-                    <Image source={require('./../../assets/images/Reass.png')}
-                        fadeDuration={0} style={styles.actionIcon}></Image>
-                    <Text style={[styles.button, styles.btnReassing]}>Reassign</Text>
-                </Pressable>
-
-                <Pressable android_ripple={styles.btnMoreInfo} onPress={() => { }} style={{ flexDirection: 'row' }}>
-                    <Image source={require('./../../assets/images/More_1.png')}
-                        fadeDuration={0} style={styles.actionIcon}></Image>
-                    <Text style={[styles.button, styles.btnMoreInfo]}>More Info</Text>
-                </Pressable>
-            </View>
-        </View>
+        <Actions></Actions>
     </View>
 }
 
@@ -122,32 +97,6 @@ const styles = StyleSheet.create({
         top: 0,
         fontWeight: 'bold',
         fontSize: 18
-    },
-    bottomContainer: {
-        flex: 1,
-        justifyContent: 'flex-end',
-    },
-    actionIcon: {
-        height: 20, 
-        width: 20,
-        marginRight: 5,
-        marginLeft: 10
-    },
-    button: {
-        fontWeight: '500',
-        fontSize: 13
-    },
-    btnApr: {
-        color: '#47c684',
-    },
-    btnRjt: {
-        color: '#FB5438',
-    },
-    btnReassing: {
-        color: '#1BCFE1',
-    },
-    btnMoreInfo: {
-        color: '#FFA700',
     }
 });
 export default NotificationDetailsScreen;
