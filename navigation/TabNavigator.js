@@ -2,11 +2,14 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MainStackNavigator, DelegationRuleNavigator, SearchStackNavigator, ReportStackNavigator } from "./StackNavigator";
 import { Image } from 'react-native';
+import HeaderLeftBar from "../component/UI/HeaderLeftSection";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
     return (
         <Tab.Navigator screenOptions={{
+            headerStyle: { backgroundColor: '#00619a' },
+            headerTintColor: 'white',
             tabBarActiveTintColor: '#fff',
             tabBarInactiveTintColor: '#fff',
             tabBarActiveBackgroundColor: '#00619A',
@@ -15,6 +18,7 @@ const BottomTabNavigator = () => {
         }}>
             <Tab.Screen name="Home" component={MainStackNavigator} options={{
                 headerShown: false, title: 'Home',
+                
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Homeactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 22 }}
@@ -25,7 +29,10 @@ const BottomTabNavigator = () => {
             }} />
 
             <Tab.Screen name="DelegationRule" component={DelegationRuleNavigator} options={{
-                headerShown: true, title: 'Delegation Rules',
+                headerShown: true, 
+                title: 'Delegation Rules',
+                headerLeft: HeaderLeftBar,
+                headerTitleAlign: 'center',
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Delegationactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}
@@ -37,7 +44,7 @@ const BottomTabNavigator = () => {
 
 
             <Tab.Screen name="Report" component={ReportStackNavigator} options={{
-                headerShown: true, title: 'Report',
+                headerShown: true, title: 'Report', headerTitleAlign: 'center',headerLeft: HeaderLeftBar,
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Reportactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}
@@ -48,7 +55,7 @@ const BottomTabNavigator = () => {
             }} />
 
             <Tab.Screen name="Search" component={SearchStackNavigator} options={{
-                headerShown: true, title: 'Search',
+                headerShown: true, title: 'Search',  headerTitleAlign: 'center',headerLeft: HeaderLeftBar,
                 tabBarIcon: ({ focused }) => {
                     return focused ? <Image source={require('../assets/images/Searchactive.png')}
                         fadeDuration={0} style={{ width: 20, height: 20 }}

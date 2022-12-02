@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     card: {
-        padding: 10,
+        flex: 1,
         backgroundColor: '#fff',
         margin: 7.5,
         position: 'relative',
