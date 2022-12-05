@@ -1,14 +1,11 @@
-import { Text, View, Button, StyleSheet, TextInput, Pressable } from 'react-native';
+import { Text, View, Button, StyleSheet, TextInput, Pressable, Image } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 
 
 
 const CreateRuleScreen = () => {
-    var radio_props = [
-        {label: 'param1', value: 0 },
-        {label: 'param2', value: 1 }
-      ];
+    const radio_props = [ {label: 'Delegate', value: 0 } ];
 
     const getInitialState = () => {
         return {
@@ -16,7 +13,7 @@ const CreateRuleScreen = () => {
         }
     }
 
-    return (
+    return (    
         <View style={styles.container}>
             <View style={{marginBottom: 20}}>
                 <Text style={styles.label}>Approval Type:</Text>
@@ -40,7 +37,10 @@ const CreateRuleScreen = () => {
 
             <View style={{marginBottom: 20}}>
                 <Text style={styles.label}>*Reassing To:</Text>
-                <TextInput style={styles.textInput} />
+                <View style={{flexDirection: "row"}}>
+                    <TextInput placeholder='All Employees and Users' style={[styles.textInput, {width: '90%', borderRightWidth: 0,}]} />
+                    <Text style={[styles.textInputIcon]}>...</Text>
+                </View>
             </View>
 
             <View style={{ marginBottom: 20 }}>
@@ -80,6 +80,21 @@ const styles = StyleSheet.create({
         padding: 0,
         margin: 0,
         height: 40
+    },
+    textInputIcon: {
+        textAlign:'center',
+        paddingTop: 5,
+        width: '10%',
+        backgroundColor: '#f2f4f5',
+        border: 1,
+        borderColor: '#2b9cd8',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderLeftWidth: 0,
+        padding: 0,
+        margin: 0,
+        height: 40,
+        color: '#2b9cd8'
     },
     textArea: {
         backgroundColor: '#fff',
