@@ -1,6 +1,7 @@
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from "@react-navigation/drawer";
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { EvilIcons } from '@expo/vector-icons';
 
 const CustomDrawerContent = (props) => {
     const navigate = useNavigation();
@@ -9,7 +10,7 @@ const CustomDrawerContent = (props) => {
         <DrawerContentScrollView {...props}>
             <View>
                 <View style={[styles.imageContainer, { marginBottom: 0, paddingBottom: 0 }]}>
-                    <Image style={styles.imageContainer.imageSpan} size={25} source={require('../../assets/images/logo.png')}></Image>
+                    <EvilIcons name="user" size={120} color="#fff" />
                 </View>
                 <View style={[styles.profileInfo]}>
                     <Text style={styles.profileInfo.profileText}>Ganesh Kalje</Text>
