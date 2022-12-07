@@ -1,5 +1,6 @@
 import { Text, View, Button, StyleSheet, TextInput, Pressable, Image } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import ReassingBox from '../UI/Reassign/ReassingBox';
 
 
 
@@ -38,21 +39,15 @@ const CreateRuleScreen = () => {
             <View style={{marginBottom: 20}}>
                 <Text style={styles.label}>*Reassing To:</Text>
                 <View style={{flexDirection: "row"}}>
-                    <TextInput placeholder='All Employees and Users' style={[styles.textInput, {width: '90%', borderRightWidth: 0,}]} />
-                    <Text style={[styles.textInputIcon]}>...</Text>
+                    <ReassingBox></ReassingBox>
                 </View>
             </View>
 
-            <View style={{ marginBottom: 20 }}>
-                <RadioForm buttonSize={10}
-                    buttonOuterSize={20}
-                    radio_props={radio_props}
-                    initial={0}
-                    onPress={(value) => { }}
-                />
+            <View style={{ marginBottom: 10 }}>
+                <RadioForm buttonSize={10} buttonOuterSize={20} radio_props={radio_props} initial={0} onPress={(value) => { }} />
             </View>
 
-            <View style={{ marginBottom: 20 }}>
+            <View style={{ marginBottom: 10, alignItems: 'center' }}>
                 <Pressable style={styles.buttonContainer}>
                     <Text style={styles.buttonStlye}>Submit</Text>
                 </Pressable>
@@ -80,21 +75,6 @@ const styles = StyleSheet.create({
         padding: 0,
         margin: 0,
         height: 40
-    },
-    textInputIcon: {
-        textAlign:'center',
-        paddingTop: 5,
-        width: '10%',
-        backgroundColor: '#f2f4f5',
-        border: 1,
-        borderColor: '#2b9cd8',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderLeftWidth: 0,
-        padding: 0,
-        margin: 0,
-        height: 40,
-        color: '#2b9cd8'
     },
     textArea: {
         backgroundColor: '#fff',
