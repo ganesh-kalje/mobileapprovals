@@ -1,7 +1,7 @@
-import { Text, View, Button, StyleSheet, TextInput, Pressable, Image } from 'react-native';
+import { Text, View, Button,  TextInput, Pressable, Image } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import ReassingBox from '../UI/Reassign/ReassingBox';
-
+import { delegationRuleStyle } from '../../styles/global';
 
 
 
@@ -15,29 +15,29 @@ const CreateRuleScreen = () => {
     }
 
     return (    
-        <View style={styles.container}>
+        <View style={delegationRuleStyle.createRuleScreen.container}>
             <View style={{marginBottom: 20}}>
-                <Text style={styles.label}>Approval Type:</Text>
-                <TextInput style={styles.textInput} />
+                <Text style={delegationRuleStyle.createRuleScreen.label}>Approval Type:</Text>
+                <TextInput style={delegationRuleStyle.createRuleScreen.textInput} />
             </View>
 
             <View style={{marginBottom: 20}}>
-                <Text style={styles.label}>*Start Date:</Text>
-                <TextInput style={styles.textInput} />
+                <Text style={delegationRuleStyle.createRuleScreen.label}>*Start Date:</Text>
+                <TextInput style={delegationRuleStyle.createRuleScreen.textInput} />
             </View>
 
             <View style={{marginBottom: 20}}>
-                <Text style={styles.label}>*End Date:</Text>
-                <TextInput style={styles.textInput} />
+                <Text style={delegationRuleStyle.createRuleScreen.label}>*End Date:</Text>
+                <TextInput style={delegationRuleStyle.createRuleScreen.textInput} />
             </View>
 
             <View>
-                <Text style={styles.label}>Notes:</Text>
-                <TextInput multiline={true} style={styles.textArea} numberOfLines={5} />
+                <Text style={delegationRuleStyle.createRuleScreen.label}>Notes:</Text>
+                <TextInput multiline={true} style={delegationRuleStyle.createRuleScreen.textArea} numberOfLines={5} />
             </View>
 
             <View style={{marginBottom: 20}}>
-                <Text style={styles.label}>*Reassing To:</Text>
+                <Text style={delegationRuleStyle.createRuleScreen.label}>*Reassing To:</Text>
                 <View style={{flexDirection: "row"}}>
                     <ReassingBox></ReassingBox>
                 </View>
@@ -48,8 +48,8 @@ const CreateRuleScreen = () => {
             </View>
 
             <View style={{ marginBottom: 10, alignItems: 'center' }}>
-                <Pressable style={styles.buttonContainer}>
-                    <Text style={styles.buttonStlye}>Submit</Text>
+                <Pressable style={delegationRuleStyle.createRuleScreen.buttonContainer}>
+                    <Text style={delegationRuleStyle.createRuleScreen.buttonStlye}>Submit</Text>
                 </Pressable>
             </View>
            
@@ -61,55 +61,4 @@ const CreateRuleScreen = () => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20
-    },
-    textInput: {
-        backgroundColor: '#fff',
-        border: 1,
-        borderColor: '#2b9cd8',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        padding: 0,
-        margin: 0,
-        height: 40
-    },
-    textArea: {
-        backgroundColor: '#fff',
-        textAlignVertical: 'top',
-        border: 1,
-        borderColor: '#2b9cd8',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        padding: 0,
-        margin: 0,
-    },
-    label: {
-        color: '#2a2c2d',
-        fontSize: 12,
-        fontWeight: '400',
-        marginBottom: 5
-    },
-
-    buttonContainer: {
-        marginRight: 20,
-        marginLeft: 20,
-        marginTop: 10,
-        paddingTop: 10,
-        paddingBottom: 10,
-        backgroundColor: '#2b9cd8',
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: '#fff',
-        width: '40%',
-        textAlign: 'center',
-    },
-    buttonStlye: {
-        color: '#fff',
-        fontSize: 18,
-        textAlign: 'center',
-    }
-});
 export default CreateRuleScreen;

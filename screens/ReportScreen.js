@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-
+import { reportScreenStyle } from '../styles/global';
 
 const data = [
     { label: '-Select-', value: '0' },
@@ -39,14 +39,14 @@ const ReportScreen = () => {
 
     return (<>
 
-        <View style={styles.container}>
-            <Text style={styles.label}>Approval Type:</Text>
+        <View style={reportScreenStyle.container}>
+            <Text style={reportScreenStyle.label}>Approval Type:</Text>
             <Dropdown
-                style={[styles.dropdown, isFocus && { borderColor: '#2b9cd8' }]}
+                style={[reportScreenStyle.dropdown, isFocus && { borderColor: '#2b9cd8' }]}
                 itemTextStyle={{ fontSize: 14 }}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                iconStyle={styles.iconStyle}
+                placeholderStyle={reportScreenStyle.placeholderStyle}
+                selectedTextStyle={reportScreenStyle.selectedTextStyle}
+                iconStyle={reportScreenStyle.iconStyle}
                 data={data}
                 maxHeight={300}
                 labelField="label"
@@ -62,14 +62,14 @@ const ReportScreen = () => {
             />
         </View>
 
-        <View style={styles.container}>
-            <Text style={styles.label}>Action Type:</Text>
+        <View style={reportScreenStyle.container}>
+            <Text style={reportScreenStyle.label}>Action Type:</Text>
             <Dropdown
-                style={[styles.dropdown, isFocus && { borderColor: '#2b9cd8' }]}
+                style={[reportScreenStyle.dropdown, isFocus && { borderColor: '#2b9cd8' }]}
                 itemTextStyle={{ fontSize: 14 }}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                iconStyle={styles.iconStyle}
+                placeholderStyle={reportScreenStyle.placeholderStyle}
+                selectedTextStyle={reportScreenStyle.selectedTextStyle}
+                iconStyle={reportScreenStyle.iconStyle}
                 data={actioData}
                 maxHeight={300}
                 labelField="label"
@@ -85,14 +85,14 @@ const ReportScreen = () => {
             />
         </View>
 
-        <View style={styles.container}>
-            <Text style={styles.label}>Date Range:</Text>
+        <View style={reportScreenStyle.container}>
+            <Text style={reportScreenStyle.label}>Date Range:</Text>
             <Dropdown
-                style={[styles.dropdown, isFocus && { borderColor: '#2b9cd8' }]}
+                style={[reportScreenStyle.dropdown, isFocus && { borderColor: '#2b9cd8' }]}
                 itemTextStyle={{ fontSize: 14 }}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                iconStyle={styles.iconStyle}
+                placeholderStyle={reportScreenStyle.placeholderStyle}
+                selectedTextStyle={reportScreenStyle.selectedTextStyle}
+                iconStyle={reportScreenStyle.iconStyle}
                 data={dateRangeData}
                 maxHeight={300}
                 labelField="label"
@@ -109,75 +109,12 @@ const ReportScreen = () => {
         </View>
 
         <View style={{ marginBottom: 10, alignItems: 'center' }}>
-                <Pressable style={styles.buttonContainer}>
-                    <Text style={styles.buttonStlye}>Submit</Text>
-                </Pressable>
-            </View>
+            <Pressable style={reportScreenStyle.buttonContainer}>
+                <Text style={reportScreenStyle.buttonStlye}>Submit</Text>
+            </Pressable>
+        </View>
 
     </>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-    },
-    dropdown: {
-        height: 50,
-        borderColor: '#2b9cd8',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderRadius: 8,
-        paddingHorizontal: 8,
-        backgroundColor: 'white',
-
-    },
-    icon: {
-        marginRight: 5,
-    },
-
-    placeholderStyle: {
-        fontSize: 14,
-    },
-    selectedTextStyle: {
-        fontSize: 14,
-    },
-    iconStyle: {
-        width: 20,
-        height: 20,
-
-    },
-    inputSearchStyle: {
-        height: 40,
-        fontSize: 16,
-    },
-
-    label: {
-        color: '#2a2c2d',
-        fontSize: 12,
-        fontWeight: '400',
-        marginBottom: 5
-    },
-
-    buttonContainer: {
-        marginRight: 20,
-        marginLeft: 20,
-        marginTop: 10,
-        paddingTop: 10,
-        paddingBottom: 10,
-        backgroundColor: '#2b9cd8',
-        borderRadius: 25,
-        borderWidth: 1,
-        borderColor: '#fff',
-        width: '40%',
-        textAlign: 'center',
-    },
-    buttonStlye: {
-        color: '#fff',
-        fontSize: 18,
-        textAlign: 'center',
-    }
-});
-
-
 export default ReportScreen;
