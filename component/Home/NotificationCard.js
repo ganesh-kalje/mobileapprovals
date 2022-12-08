@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { homeScreenStyle } from '../../styles/global';
 
 const NotificationCard = ({ mapKey, displayCount }) => {
     const navigate = useNavigation();
@@ -44,79 +45,19 @@ const NotificationCard = ({ mapKey, displayCount }) => {
 
     const notificationMap = new Map(kvArray);
 
-    return <Pressable onPress={() => navigate.navigate("PendingAction")}><View style={[styles.card, styles.shadowProp]} >
-        <View style={styles.infoSpan}>
+    return <Pressable onPress={() => navigate.navigate("PendingAction")}><View style={[homeScreenStyle.notification.card, homeScreenStyle.notification.shadowProp]} >
+        <View style={homeScreenStyle.notification.infoSpan}>
             <Image source={notificationMap.get(mapKey).source}
                 fadeDuration={0} style={notificationMap.get(mapKey).style}></Image>
-            <Text style={styles.infoSpanCounter}>{displayCount}</Text>
+            <Text style={homeScreenStyle.notification.infoSpanCounter}>{displayCount}</Text>
         </View>
 
-        <View style={styles.infoSpan}>
+        <View style={homeScreenStyle.notification.infoSpan}>
             <Text>{notificationMap.get(mapKey).title}</Text>
-            <Text style={styles.infoSpanArrow}><AntDesign name="arrowright" size={20} color="#646a70" /></Text>
+            <Text style={homeScreenStyle.notification.infoSpanArrow}><AntDesign name="arrowright" size={20} color="#646a70" /></Text>
         </View>
 
-        <View style={styles.styleDivider}></View>
+        <View style={homeScreenStyle.notification.styleDivider}></View>
     </View></Pressable>
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    card: {
-        flex: 1,
-        backgroundColor: '#fff',
-        margin: 7.5,
-        position: 'relative',
-        borderRadius: 6,
-        backgroundPosition: 10,
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        marginVertical: 10
-    },
-    shadowProp: {
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        shadowColor: '#52006A',
-        elevation: 20,
-    },
-    styleDivider: {
-        backgroundColor: '#2a2c2d',
-        height: 1,
-        margin: 10,
-        width: 50,
-        flexDirection: 'row',
-        justifyContent: "space-between"
-    },
-    infoSpan: {
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        paddingBottom: 20
-    },
-    infoSpanCounter: {
-        width: 32.5,
-        height: 32.5,
-        borderRadius: 50,
-        backgroundColor: '#fff',
-        borderColor: '#646a70',
-        color: '#646a70',
-        borderWidth: 1,
-        right: 10,
-        top: 10,
-        fontSize: 18,
-        textAlign: 'center',
-    },
-    infoSpanArrow: {
-        width: 32.5,
-        height: 32.5,
-        color: '#646a70',
-        right: 10,
-        top: 10,
-        fontSize: 18,
-        textAlign: 'center',
-    }
-});
-
 export default NotificationCard;

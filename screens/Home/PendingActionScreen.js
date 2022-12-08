@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet, TextInput, SafeAreaView, ScrollView, Pressable } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { homeScreenStyle } from '../../styles/global';
 
 const RenderCard = () => {
-    return <View style={[styles.card, styles.shadowProp]}>
-        <Text style={styles.infoSpanCounter}>S</Text>
+    return <View style={[homeScreenStyle.pendingActions.card, homeScreenStyle.pendingActions.shadowProp, homeScreenStyle.pendingActions.cardWrapper]}>
+        <Text style={homeScreenStyle.pendingActions.infoSpanCounter}>S</Text>
         <View>
-            <Text style={styles.headerSpan}>Shiith Ashley</Text>
-            <Text style={styles.descriptionSpan}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+            <Text style={homeScreenStyle.pendingActions.headerSpan}>Shiith Ashley</Text>
+            <Text style={homeScreenStyle.pendingActions.descriptionSpan}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                 standard dummy text ever since the 1500s,
             </Text>
         </View>
@@ -17,8 +18,8 @@ const RenderCard = () => {
 const PendingActionScreen = () => {
     const navigate = useNavigation();
     return (<>
-        <View style={styles.filterContainer}>
-            <TextInput style={styles.input} placeholder="Type here to filter" />
+        <View style={homeScreenStyle.pendingActions.filterContainer}>
+            <TextInput style={homeScreenStyle.pendingActions.input} placeholder="Type here to filter" />
         </View>
         <SafeAreaView>
             <ScrollView>
@@ -34,6 +35,7 @@ const PendingActionScreen = () => {
 
     </>)
 }
+
 const styles = StyleSheet.create({
     filterContainer: {
         padding: 5,
