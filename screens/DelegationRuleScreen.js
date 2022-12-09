@@ -5,6 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import ViewRuleScreen from '../component/delegation-rules/ViewRuleScreen';
 import CreateRuleScreen from '../component/delegation-rules/CreateRuleScreen';
 import SearchUserScreen from "../component/UI/Reassign/SearchUserScreen";
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchRules } from '../store/delegation-rules';
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -40,6 +43,18 @@ function Root() {
 
 
 const DelegationRuleScreen = ({ navigation }) => {
+    const dispath = useDispatch();
+
+    useEffect(() => {
+       
+
+          dispath(fetchRules('gkaljeo24'));
+      
+         
+
+        
+    }, []);
+
     return (
         <NavigationContainer independent={true} >
             <Stack.Navigator>
