@@ -1,106 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-const containerStyle = {
-    cardContainer: {
-        card: {
-            padding: 10,
-            backgroundColor: '#fff',
-            margin: 7.5,
-            position: 'relative',
-            borderRadius: 6,
-            backgroundPosition: 10,
-            paddingVertical: 20,
-            paddingHorizontal: 20,
-            marginVertical: 10
-        },
-        shadowProp: {
-            shadowOffset: { width: -2, height: 4 },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-            shadowColor: '#52006A',
-            elevation: 20,
-        },
-    }
-}
-
-const uiComponentStyle = {
-    label: {
-        color: '#2a2c2d',
-        fontSize: 12,
-        fontWeight: '400',
-        marginBottom: 5
-    },
-    dropDown: {
-        dropdown: {
-            height: 50,
-            borderColor: '#2b9cd8',
-            borderStyle: 'solid',
-            borderWidth: 1,
-            borderRadius: 8,
-            paddingHorizontal: 8,
-            backgroundColor: 'white',
-        },
-        icon: {
-            marginRight: 5,
-        },
-        placeholderStyle: {
-            fontSize: 14,
-        },
-        selectedTextStyle: {
-            fontSize: 14,
-        },
-        iconStyle: {
-            width: 20,
-            height: 20,
-        },
-        inputSearchStyle: {
-            height: 40,
-            fontSize: 16,
-        },
-    },
-    button: {
-        buttonContainer: {
-            marginRight: 20,
-            marginLeft: 20,
-            marginTop: 10,
-            paddingTop: 10,
-            paddingBottom: 10,
-            backgroundColor: '#2b9cd8',
-            borderRadius: 25,
-            borderWidth: 1,
-            borderColor: '#fff',
-            width: '40%',
-            textAlign: 'center',
-        },
-        buttonStlye: {
-            color: '#fff',
-            fontSize: 18,
-            textAlign: 'center',
-        }
-    },
-    textInput: {
-        backgroundColor: '#fff',
-        border: 1,
-        borderColor: '#2b9cd8',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        padding: 0,
-        margin: 0,
-        height: 40
-    },
-    textArea: {
-        backgroundColor: '#fff',
-        textAlignVertical: 'top',
-        border: 1,
-        borderColor: '#2b9cd8',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        padding: 0,
-        margin: 0,
-    },
-}
-
-
+import {containerStyle, uiComponentStyle} from './container';
 
 export const searchScreenStyle = StyleSheet.create({
     container: {
@@ -145,18 +44,8 @@ export const delegationRuleStyle = StyleSheet.create({
             float: 'left',
             paddingBottom: 10,
         },
-        labelStyle: {
-            color: '#00619a',
-            fontSize: 12,
-            fontWeight: '400',
-            width: '30%'
-        },
-        valueStyle: {
-            color: '#000',
-            fontSize: 12,
-            fontWeight: '400',
-            width: '70%',
-        },
+        labelStyle: containerStyle.cardContainer.labelStyle,
+        valueStyle: containerStyle.cardContainer.valueStyle,
         buttonContainer: uiComponentStyle.button.buttonContainer,
         buttonStlye: uiComponentStyle.button.buttonStlye,
     },
@@ -280,11 +169,7 @@ export const homeScreenStyle = StyleSheet.create({
             paddingTop: 10,
             paddingBottom: 10
         },
-        separator: {
-            borderBottomWidth: 1,
-            borderStyle: 'solid',
-            borderColor: '#dde3e6'
-        },
+        separator: containerStyle.cardContainer.separator,
         actionLink: {
             flexDirection: 'row',
             justifyContent: "space-between",
@@ -302,6 +187,173 @@ export const homeScreenStyle = StyleSheet.create({
             top: 0,
             fontWeight: 'bold',
             fontSize: 18
+        }
+    },
+    lineScreen: {
+        card: containerStyle.cardContainer.card,
+        shadowProp: containerStyle.cardContainer.shadowProp,
+        labelStyle: containerStyle.cardContainer.labelStyle,
+        valueStyle: containerStyle.cardContainer.valueStyle,
+        separator: containerStyle.cardContainer.separator,
+        row: containerStyle.cardContainer.row,
+        boxItem: containerStyle.cardContainer.boxItem,
+    },
+    actionHistoryScreen: {
+        card: containerStyle.cardContainer.card,
+        shadowProp: containerStyle.cardContainer.shadowProp,
+        separator: containerStyle.cardContainer.separator,
+        labelStyle: containerStyle.cardContainer.labelStyle,
+        valueStyle: containerStyle.cardContainer.valueStyle,
+        row: containerStyle.cardContainer.row,
+        boxItem: containerStyle.cardContainer.boxItem,
+    },
+    attachmentsScreen: {
+        nameContainer: {
+            backgroundColor: '#ebeef0',
+            padding: 10,
+            margin: 10
+        },
+        labeValue: {
+            color: '#00619a',
+            fontWeight: '500',
+            fontSize: 15
+        }
+    },
+    actionScren: {
+        bottomContainer: {
+            flex: 1,
+            justifyContent: 'flex-end',
+        },
+        actionIcon: {
+            height: 18,
+            width: 18,
+            marginTop: 3,
+            marginRight: 2
+        },
+        button: {
+            fontSize: 15,
+            fontWeight: '300'
+        },
+        btnApr: {
+            color: '#47c684',
+        },
+        btnRjt: {
+            color: '#FB5438',
+        },
+        btnReassing: {
+            color: '#1BCFE1',
+        },
+        btnMoreInfo: {
+            color: '#FFA700',
+        },
+        centeredView: {
+            flex: 1,
+            marginTop: 35,
+        },
+        modalView: {
+            margin: 10,
+            backgroundColor: "#f2f4f5",
+            borderRadius: 5,
+            padding: 15,
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5
+        },
+    
+        modalText: {
+            marginBottom: 15,
+            color: '#00619a',
+            fontSize: 14,
+            fontWeight: '500'
+        },
+        textArea: uiComponentStyle.textArea,
+        label: {
+            color: '#2a2c2d',
+            fontSize: 12,
+            fontWeight: '400',
+            marginBottom: 5
+        },
+        buttonContainer: {
+            marginTop: 20,
+            flexDirection: 'row',
+        },
+        modalButton: {
+            width: '50%',
+            alignItems: 'center',
+            borderTopWidth: 1,
+            borderTopColor: '#dde2e6',
+            paddingTop: 10,
+            rightButtonBorder: {
+                borderRightWidth: 1,
+                borderRightColor: '#dde2e6',
+            },
+            textStyle: {
+                fontWeight: '500',
+                color: '#00619a'
+            }
+        }
+    },
+    filterSection: {
+        container: {
+            flexDirection: 'row',
+            backgroundColor: '#0272B6',
+            paddingTop: 15,
+            paddingBottom: 15,
+            paddingLeft: 10,
+            justifyContent: "space-between"
+        },
+        center: {
+            flexDirection: 'row',
+        },
+        label: {
+            color: '#fff',
+            fontSize: 12,
+            marginRight: 10,
+            fontWeight: '200',
+            alignItems: "center",
+        },
+        ValueLable: {
+            color: '#fff',
+            fontSize: 12,
+            fontWeight: '400',
+            alignItems: "center",
+
+        },
+        filterSpan: {
+            marginRight: 20
+        },
+        filterOptContainer: {
+            backgroundColor: '#00619a',
+            padding: 10
+
+        },
+        filterOption: {
+            flexDirection: 'row',
+            justifyContent: "space-between",
+            alignItems: 'center',
+        }
+    },
+    notificationHeaderSection: {
+        mainHeader: {
+            color: '#1f6f9a',
+            fontSize: 16,
+            fontWeight: '500'
+        },
+        descriptionSpan: {
+            color: '#2a2a2a',
+            fontSize: 12,
+            paddingTop: 10,
+            paddingBottom: 10
+        },
+        separator: {
+            borderBottomWidth: 1,
+            borderStyle: 'solid',
+            borderColor: '#dde3e6'
         }
     }
 })
