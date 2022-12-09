@@ -1,8 +1,12 @@
 import { Text, View, Pressable } from 'react-native';
+import { useSelector } from 'react-redux';
+import { selectAllRules } from '../../store/delegation-rules';
 import { delegationRuleStyle } from '../../styles/global';
 
 
 const ViewRuleScreen = () => {
+    const ruleSelector = useSelector(selectAllRules);
+    console.log('rules selection ',  ruleSelector)
     return (<>
         <View style={[delegationRuleStyle.viewRuleScreen.card, delegationRuleStyle.viewRuleScreen.shadowProp]}>
             <View style={delegationRuleStyle.viewRuleScreen.listView}>
