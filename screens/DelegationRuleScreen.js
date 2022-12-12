@@ -6,7 +6,7 @@ import CreateRuleScreen from '../component/delegation-rules/CreateRuleScreen';
 import SearchUserScreen from "../component/UI/Reassign/SearchUserScreen";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchRules } from '../store/delegation-rules';
+import { fetchRules,fetchItemsType } from '../store/delegation-rules';
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -46,7 +46,8 @@ const DelegationRuleScreen = ({ navigation }) => {
     const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
     
     useEffect(() => {
-       dispath(fetchRules(loggedInNTID));
+        dispath(fetchItemsType(loggedInNTID));
+        dispath(fetchRules(loggedInNTID));
     }, [loggedInNTID]);
 
     return (

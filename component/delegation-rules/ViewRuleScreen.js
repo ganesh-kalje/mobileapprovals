@@ -8,8 +8,6 @@ import { delegationRuleStyle } from '../../styles/global';
 const ViewRuleScreen = () => {
     const ruleSelector = useSelector(selectAllRules);
     
-    console.log('rules selection 123',  ruleSelector);
-
     const renderItem = ({ item }) => (
         <View style={[delegationRuleStyle.viewRuleScreen.card, delegationRuleStyle.viewRuleScreen.shadowProp]}>
             <View style={delegationRuleStyle.viewRuleScreen.listView}>

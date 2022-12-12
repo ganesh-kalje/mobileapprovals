@@ -58,6 +58,11 @@ export const delegationRuleStyle = StyleSheet.create({
         label: uiComponentStyle.label,
         buttonContainer: uiComponentStyle.button.buttonContainer,
         buttonStlye: uiComponentStyle.button.buttonStlye,
+        dropdown: uiComponentStyle.dropDown.dropdown,
+        icon: uiComponentStyle.dropDown.dropdown,
+        placeholderStyle: uiComponentStyle.dropDown.placeholderStyle,
+        selectedTextStyle: uiComponentStyle.dropDown.selectedTextStyle,
+        iconStyle: uiComponentStyle.dropDown.iconStyle,
     }
 });
 
