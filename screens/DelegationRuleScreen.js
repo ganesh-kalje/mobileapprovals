@@ -1,11 +1,10 @@
-import { Text, View, Button, StyleSheet } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import ViewRuleScreen from '../component/delegation-rules/ViewRuleScreen';
 import CreateRuleScreen from '../component/delegation-rules/CreateRuleScreen';
 import SearchUserScreen from "../component/UI/Reassign/SearchUserScreen";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchRules } from '../store/delegation-rules';
 
@@ -44,16 +43,11 @@ function Root() {
 
 const DelegationRuleScreen = ({ navigation }) => {
     const dispath = useDispatch();
-
+    const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
+    
     useEffect(() => {
-       
-
-          dispath(fetchRules('gkaljeo24'));
-      
-         
-
-        
-    }, []);
+       dispath(fetchRules(loggedInNTID));
+    }, [loggedInNTID]);
 
     return (
         <NavigationContainer independent={true} >

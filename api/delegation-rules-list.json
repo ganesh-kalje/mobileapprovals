@@ -1,0 +1,74 @@
+{
+    "rules": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11073036, DateTime : 12/09/2022 07:15:45 AM",
+        "ApprovalReportOutput": [
+            {
+                "RULE_ID": 7453619,
+                "RULE_NAME": "Delegate:ARORA, MEENAKSHI",
+                "ITEM_TYPE": "Change Request(s)",
+                "BEGIN_DATE": "2022-10-11T00:00:00.000-04:00",
+                "END_DATE": "2022-10-15T00:00:00.000-04:00",
+                "MESSAGE": "test",
+                "REASSIGN": "ARORA, MEENAKSHI",
+                "REASSIGN_NTID": "MARORA201",
+                "RULE_ACTION": "Delegate"
+            },
+            {
+                "RULE_ID": 7453620,
+                "RULE_NAME": "Delegate:ARORA, MEENAKSHI",
+                "ITEM_TYPE": "Change Request(s)",
+                "BEGIN_DATE": "2022-12-11T00:00:00.000-04:00",
+                "END_DATE": "2022-12-15T00:00:00.000-04:00",
+                "MESSAGE": "test",
+                "REASSIGN": "ARORA, MEENAKSHI",
+                "REASSIGN_NTID": "MARORA201",
+                "RULE_ACTION": "Delegate"
+            },
+            {
+                "RULE_ID": 7453621,
+                "RULE_NAME": "Delegate:ARORA, MEENAKSHI",
+                "ITEM_TYPE": "Change Request(s)",
+                "BEGIN_DATE": "2022-10-11T00:00:00.000-04:00",
+                "END_DATE": "2022-10-15T00:00:00.000-04:00",
+                "MESSAGE": "test",
+                "REASSIGN": "ARORA, MEENAKSHI",
+                "REASSIGN_NTID": "MARORA201",
+                "RULE_ACTION": "Delegate"
+            },
+            {
+                "RULE_ID": 7453622,
+                "RULE_NAME": "Delegate:ARORA, MEENAKSHI",
+                "ITEM_TYPE": "Change Request(s)",
+                "BEGIN_DATE": "2022-12-11T00:00:00.000-04:00",
+                "END_DATE": "2022-12-15T00:00:00.000-04:00",
+                "MESSAGE": "test",
+                "REASSIGN": "ARORA, MEENAKSHI",
+                "REASSIGN_NTID": "MARORA201",
+                "RULE_ACTION": "Delegate"
+            },
+            {
+                "RULE_ID": 7453623,
+                "RULE_NAME": "Delegate:ARORA, MEENAKSHI",
+                "ITEM_TYPE": "Change Request(s)",
+                "BEGIN_DATE": "2022-10-11T00:00:00.000-04:00",
+                "END_DATE": "2022-10-15T00:00:00.000-04:00",
+                "MESSAGE": "test",
+                "REASSIGN": "ARORA, MEENAKSHI",
+                "REASSIGN_NTID": "MARORA201",
+                "RULE_ACTION": "Delegate"
+            },
+            {
+                "RULE_ID": 7453624,
+                "RULE_NAME": "Delegate:ARORA, MEENAKSHI",
+                "ITEM_TYPE": "Change Request(s)",
+                "BEGIN_DATE": "2022-12-11T00:00:00.000-04:00",
+                "END_DATE": "2022-12-15T00:00:00.000-04:00",
+                "MESSAGE": "test",
+                "REASSIGN": "ARORA, MEENAKSHI",
+                "REASSIGN_NTID": "MARORA201",
+                "RULE_ACTION": "Delegate"
+            }
+        ]
+    }
+}
