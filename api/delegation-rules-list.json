@@ -431,5 +431,30 @@
                 "MORE_INFO_FLAG": "N"
             }
         ]
-    }
+    },
+    "GetNotificationDetails": {
+        "STATUS" : "SUCCESS",
+        "STATUS_MESSAGE" : "Records Extracted Successfully. Flow Id :11090034, DateTime : 12/14/2022 08:08:46 AM",
+        "NotificationDetailsOutput" : [ {
+          "FROM_USER" : "ADEYEMI, ABIOLA",
+          "SUBJECT" : "Reminder Mail :000145.00.350.56200 Invoice initiated to ADEYEMI, ABIOLA for Vendor PERFECTIONS JANITORIAL SERVICES for            $8,932.46 on Invoice 307 requires your approval.",
+          "AMOUNT" : "8932.46",
+          "SUPPLIER" : "PERFECTIONS JANITORIAL SERVICES",
+          "NTID" : "GKALJE035",
+          "NOTIFICATION_ID" : "69989414",
+          "APPROVAL_TYPE_LOOKUP_CODE" : "APINVAPR",
+          "INVOICE_SOURCE" : "GXS PORTAL",
+          "INVOICE_ID" : 97596277,
+          "INVOICE_DATE" : "18-AUG-2022",
+          "CURRENCY" : "USD",
+          "INVOICE_NUMBER" : "307",
+          "DOCUMENT_NUMBER" : "307",
+          "QUESTION" : null,
+          "ANSWER" : null,
+          "MORE_INFO_FLAG" : "N",
+          "REQ_INFO_RESPONDER" : "SENDER",
+          "STATE_OF_SERVICES" : "VA",
+          "STATE_OF_SERV_INFO" : null
+        } ]
+      }
 }

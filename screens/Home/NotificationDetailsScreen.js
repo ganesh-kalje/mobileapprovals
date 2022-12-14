@@ -4,18 +4,69 @@ import { useNavigation } from '@react-navigation/native';
 import NotificationHeader from "../../component/Home/NotificationHeader";
 import Actions from "../../component/Home/Actions";
 import { homeScreenStyle } from '../../styles/global';
+import { useDispatch, useSelector } from "react-redux";
+import { selectReportId, fetchApprovalDetails, selectApprovalDetails } from "../../store/notiications";
+import DisplayHelper from '../../helpers/display-helper';
 
-const NotificationDetailsScreen = () => {
+import { useEffect } from "react";
+
+const NotificationDetailsScreen = ({ route, navigation }) => {
     const navigate = useNavigation();
+    const dispatch = useDispatch();
+    const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
+    const LOOKUP_CODE = route.params.LOOKUP_CODE;
+    const NOTIFICATION_ID = route.params.NOTIFICATION_ID;
+    const SENDER = route.params.SENDER;
+    const SUBJECT = route.params.SUBJECT;
+    const FYI_FLAG = route.params.FYI_FLAG;
+
+    
+    const ReportId = useSelector((state) => selectReportId(state, LOOKUP_CODE));
+    const approvalDetails = useSelector((state) => selectApprovalDetails(state, NOTIFICATION_ID));
+
+    let DOCUMENT_ID = '';
+    if(LOOKUP_CODE === 'CMAPPR' ) {
+        DOCUMENT_ID = NOTIFICATION_ID;
+    } else if(approvalDetails !== null && typeof approvalDetails.DOCUMENT_ID === 'undefined') { 
+        DOCUMENT_ID = approvalDetails.INVOICE_ID;
+    }
+    else if (approvalDetails !== null)  {
+        DOCUMENT_ID = approvalDetails.DOCUMENT_ID
+    } 
+    
+    const NOTIFICATION_STATUS = (FYI_FLAG === "Y") ? "CLOSED" : "OPEN";
+    const actionHistoryState = { SUBJECT,SENDER, LOOKUP_CODE, NOTIFICATION_ID, DOCUMENT_ID};
+    const justificationState = { SUBJECT,SENDER, DOCUMENT_ID};
+    const lineState = { SUBJECT,SENDER, LOOKUP_CODE, NOTIFICATION_ID, NOTIFICATION_STATUS};
+    
+    const header = (LOOKUP_CODE === 'APINVAPR') ? approvalDetails.INVOICE_NUMBER : SENDER;
+    const subHeader = (LOOKUP_CODE === 'CMAPPR') ? NOTIFICATION_ID : '';
+
+    
+    useEffect(() => {
+        if (ReportId !== null && approvalDetails === null) {
+            const requestInput = {NOTIFICATION_ID: NOTIFICATION_ID, APPROVAL_TYPE_LOOKUP_CODE: LOOKUP_CODE,NOTIFICATION_STATUS, NTID: loggedInNTID}
+            dispatch(fetchApprovalDetails(requestInput));
+        }
+    }, [LOOKUP_CODE, NOTIFICATION_ID, ReportId, loggedInNTID, NOTIFICATION_STATUS, approvalDetails, dispatch]);
 
     return <View style={[homeScreenStyle.notificationDetails.card, homeScreenStyle.notificationDetails.shadowProp, {flex: 1}]}>
-        <NotificationHeader></NotificationHeader>
+        <NotificationHeader header={header} subHeader={subHeader} SUBJECT={SUBJECT}  ></NotificationHeader>
 
         <View style={{ paddingTop: 5, borderBottomWidth: 1, borderColor: '#dde3e6' }}>
-            <Text style={homeScreenStyle.notificationDetails.mainHeader}>INV44525</Text>
-            <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>GX5PORTAL</Text>
+            {approvalDetails !== null && <>
+                {LOOKUP_CODE === 'APINVAPR' && DisplayHelper.isValid(approvalDetails.INVOICE_SOURCE) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Invoice Source</Text>
+                    <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>{approvalDetails.INVOICE_SOURCE}</Text>
+                </>}
+            </>}
+            
+
+            
+
             <Text style={homeScreenStyle.notificationDetails.mainHeader}>Amount</Text>
             <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>5.025.00</Text>
+
             <Text style={homeScreenStyle.notificationDetails.mainHeader}>Supplier</Text>
             <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>TECH SYSTEM INC</Text>
             <Text style={homeScreenStyle.notificationDetails.mainHeader}>Invoice Date</Text>

@@ -29,8 +29,9 @@ export const fetchApprovalList = createAsyncThunk('posts/fetchApprovalList', asy
  */
  export const fetchApprovalDetails = createAsyncThunk('posts/fetchApprovalDetails', async (postObj) => {
   // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationDetails/CIFANotificationDetailsRest/GetNotificationDetails`;
-  const urlToCall = '';
-  const response = await axios.post(urlToCall, postObj);
+  const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetNotificationDetails.json';
+  const response = await axios.get(urlToCall);
+  // const response = await axios.post(urlToCall, postObj);
   return (response.STATUS.toLowerCase() === 'success' && response.NotificationDetailsOutput) ? response.NotificationDetailsOutput : [];
 });
 
@@ -98,7 +99,7 @@ export const selectRejectionReason = (state) => state.notification.rejectionReas
 
 export const selectReportId = createSelector([selectNotification, (selectNotification, category) => category], 
   (notification, category) => {
-    const selectedNotification = notification.find((current) => current.APPROVAL_TYPE_LOOKUP_CODE === category);
+    const selectedNotification = notification.find((current) => current.APPROVAL_TYPE_LOOKUP_CODE.toLowerCase() === category);
     return (selectedNotification) ? selectedNotification.ReportID : null;
 });
 
