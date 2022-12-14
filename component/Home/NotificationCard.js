@@ -3,7 +3,9 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { homeScreenStyle } from '../../styles/global';
 
-const NotificationCard = ({ mapKey, displayCount }) => {
+const NotificationCard = ({ mapKey, displayCount, fyIFlag }) => {
+    const stateData = { APPROVAL_TYPE_LOOKUP_CODE: mapKey, FYI_FLAG: fyIFlag };
+
     const navigate = useNavigation();
     const kvArray = [['apinvapr', {
         source: require('../../assets/images/APinvoice.png'),
@@ -45,7 +47,7 @@ const NotificationCard = ({ mapKey, displayCount }) => {
 
     const notificationMap = new Map(kvArray);
 
-    return <Pressable onPress={() => navigate.navigate("PendingAction")}><View style={[homeScreenStyle.notification.card, homeScreenStyle.notification.shadowProp]} >
+    return <Pressable onPress={() => navigate.navigate("PendingAction", stateData)}><View style={[homeScreenStyle.notification.card, homeScreenStyle.notification.shadowProp]} >
         <View style={homeScreenStyle.notification.infoSpan}>
             <Image source={notificationMap.get(mapKey).source}
                 fadeDuration={0} style={notificationMap.get(mapKey).style}></Image>

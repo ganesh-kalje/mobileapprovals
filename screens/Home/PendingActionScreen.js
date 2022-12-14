@@ -1,103 +1,77 @@
-import { View, Text, StyleSheet, TextInput, SafeAreaView, ScrollView, Pressable } from "react-native";
+import { View, Text, FlatList, TextInput, SafeAreaView, ScrollView, Pressable } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { homeScreenStyle } from '../../styles/global';
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { selectApprovalList, fetchApprovalList } from "../../store/notiications";
 
-const RenderCard = () => {
+const RenderCard = ({ item }) => {
     return <View style={[homeScreenStyle.pendingActions.card, homeScreenStyle.pendingActions.shadowProp, homeScreenStyle.pendingActions.cardWrapper]}>
-        <Text style={homeScreenStyle.pendingActions.infoSpanCounter}>S</Text>
+        <Text style={homeScreenStyle.pendingActions.infoSpanCounter}> {(item.FROM_USER == null) ? "!" : item.FROM_USER.slice(0, 1)}</Text>
         <View>
-            <Text style={homeScreenStyle.pendingActions.headerSpan}>Shiith Ashley</Text>
-            <Text style={homeScreenStyle.pendingActions.descriptionSpan}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since the 1500s,
-            </Text>
+            <Text style={homeScreenStyle.pendingActions.headerSpan}>{item.FROM_USER}</Text>
+            <Text style={homeScreenStyle.pendingActions.descriptionSpan}>{item.SUBJECT}</Text>
         </View>
     </View>
 }
 
 
-const PendingActionScreen = () => {
+const PendingActionScreen = ({ route, navigation }) => {
     const navigate = useNavigation();
+    const dispatch = useDispatch();
+    const APPROVAL_TYPE_LOOKUP_CODE = route.params.APPROVAL_TYPE_LOOKUP_CODE;
+    const approvalListSelector = useSelector((state) => selectApprovalList(state, APPROVAL_TYPE_LOOKUP_CODE));
+    const approvalListValue = (approvalListSelector) ? approvalListSelector.approvalList : null;
+
+    const FYI_FLAG = route.params.FYI_FLAG;
+    const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
+    const [approvalList, setApprovalList] = useState([]);
+    const [tempApprovalList, setTempApprovalList] = useState([]);
+    const approvalDetailsLookup = ['REQAPPRV', 'APINVAPR', 'CMAPPR', 'POREQCHA'];
+    const urlLink = (approvalDetailsLookup.includes(APPROVAL_TYPE_LOOKUP_CODE)) ? '/home/approvaldetails' : '/home/approvaldetailscar';
+    
+    const onChangeHandler = (value) => { 
+        
+        const search = value.toLowerCase();
+        const filterData = tempApprovalList.filter((currentObj) => (currentObj.SUBJECT.toLowerCase().includes(search) 
+            || currentObj.FROM_USER.toLowerCase().includes(search)));
+            console.log('value 123 ', value);
+            setApprovalList(filterData);
+
+        /**if(value && value === null) {
+            return 
+        }
+        console.log(search);
+        const search = value.toLowerCase();
+        const filterData = tempApprovalList.filter((currentObj) => (currentObj.SUBJECT.toLowerCase().includes(search) 
+            || currentObj.FROM_USER.toLowerCase().includes(search)));
+        setApprovalList(filterData);**/
+    }
+
+    useEffect(() => {
+        if (approvalListValue === null && APPROVAL_TYPE_LOOKUP_CODE) {
+            const dataInput = { NTID: loggedInNTID, APPROVAL_TYPE_LOOKUP_CODE, FYI_FLAG };
+            dispatch(fetchApprovalList(dataInput));
+        } else {
+            setApprovalList(approvalListValue);
+            setTempApprovalList(approvalListValue)
+        }
+    }, [loggedInNTID, APPROVAL_TYPE_LOOKUP_CODE, FYI_FLAG, dispatch, approvalListValue]);
+
+   
+    const renderItem = ({ item }) => (
+        <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard item={item}></RenderCard></Pressable>
+    );
+    
     return (<>
         <View style={homeScreenStyle.pendingActions.filterContainer}>
-            <TextInput style={homeScreenStyle.pendingActions.input} placeholder="Type here to filter" />
+            <TextInput style={homeScreenStyle.pendingActions.input} onChangeText={(event) => onChangeHandler(event)}  placeholder="Type here to filter" />
         </View>
         <SafeAreaView>
-            <ScrollView>
-                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
-                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
-                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
-                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
-                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
-                <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard></RenderCard></Pressable>
-                
-            </ScrollView>
+            <FlatList data={approvalList} renderItem={renderItem} keyExtractor={item => item.NOTIFICATION_ID } />
         </SafeAreaView>
 
     </>)
 }
 
-const styles = StyleSheet.create({
-    filterContainer: {
-        padding: 5,
-        backgroundColor: '#0272B6'
-    },
-    input: {
-        height: 40,
-        margin: 12,
-        padding: 10,
-        backgroundColor: '#fff',
-        borderRadius: 3,
-        border: 'none'
-    },
-    listContainer: {
-        flexDirection: 'row'
-    },
-    card: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'stretch',
-        backgroundColor: '#fff',
-        margin: 7.5,
-        position: 'relative',
-        borderRadius: 6,
-        backgroundPosition: 10,
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-        marginVertical: 10
-    },
-    shadowProp: {
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        shadowColor: '#52006A',
-        elevation: 20,
-    },
-    descriptionSpan: {
-        color: '#2a2a2a',
-        fontSize: 12,
-        fontWeight: '400',
-    },
-    infoSpanCounter: {
-        width: 32.5,
-        height: 32.5,
-        borderRadius: 50,
-        backgroundColor: '#2B9CD8',
-        borderColor: '#646a70',
-        color: '#fff',
-        borderWidth: 1,
-        right: 10,
-        top: 0,
-        fontSize: 18,
-        textAlign: 'center',
-        marginLeft: 20,
-        marginRight: 20
-    },
-    headerSpan: {
-        color: '#00619a',
-        fontWeight: '400',
-        fontSize: 16,
-        paddingBottom: 3,
-        marginTop: -4
-    }
-});
 export default PendingActionScreen;

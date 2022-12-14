@@ -1,27 +1,33 @@
-import React from "react";
-import { View, ScrollView, SafeAreaView } from "react-native";
+import React, { useEffect } from "react";
+import { View, ScrollView, SafeAreaView, FlatList } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import Filter from '../component/Home/Filter';
 import NotificationCard from "../component/Home/NotificationCard";
+import { fetchNotifications, selectNotification, selectFYIFlag } from "../store/notiications";
 
-const HomeScreen = ({navigation}) => {
+
+const HomeScreen = ({ navigation }) => {
+    const fyIFlag = useSelector(selectFYIFlag);
+    const notifications = useSelector(selectNotification);
+    const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        if (notifications === null) {
+            dispatch(fetchNotifications({ NTID: loggedInNTID, FYI_FLAG: fyIFlag, SourceSystem: "WORKLIST" }));
+        }
+    }, [fyIFlag, loggedInNTID, notifications, dispatch])
+
+    const renderItem = ({ item }) => (
+        <NotificationCard mapKey={`${item.APPROVAL_TYPE_LOOKUP_CODE.toLowerCase()}`} fyIFlag={fyIFlag} displayCount={`${item.NO_OF_NOTIFICATIONS}`}></NotificationCard>
+    );
+
     return (
         <>
             <Filter></Filter>
-            <View>
-                <SafeAreaView>
-                    <ScrollView>
-                        <NotificationCard mapKey={'apinvapr'} displayCount={'10'}></NotificationCard>
-                        <NotificationCard mapKey={'pabudwf'} displayCount={'9'}></NotificationCard>
-                        <NotificationCard mapKey={'poreqcha'} displayCount={'8'}></NotificationCard>
-                        <NotificationCard mapKey={'apexp'} displayCount={'7'}></NotificationCard>
-                        <NotificationCard mapKey={'reqapprv'} displayCount={'6'}></NotificationCard>
-                        <NotificationCard mapKey={'xxcmstoc'} displayCount={'5'}></NotificationCard>
-                        <NotificationCard mapKey={'xxcmstra'} displayCount={'4'}></NotificationCard>
-                        <NotificationCard mapKey={'porpocha'} displayCount={'3'}></NotificationCard>
-                        <NotificationCard mapKey={'cmappr'} displayCount={'2'}></NotificationCard>
-                    </ScrollView>
-                </SafeAreaView>
-            </View>
+            <SafeAreaView>
+                <FlatList data={notifications} renderItem={renderItem} keyExtractor={item => item.APPROVAL_TYPE_LOOKUP_CODE} />
+            </SafeAreaView>
         </>
     );
 }
