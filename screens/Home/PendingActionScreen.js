@@ -28,24 +28,15 @@ const PendingActionScreen = ({ route, navigation }) => {
     const [approvalList, setApprovalList] = useState([]);
     const [tempApprovalList, setTempApprovalList] = useState([]);
     const approvalDetailsLookup = ['REQAPPRV', 'APINVAPR', 'CMAPPR', 'POREQCHA'];
-    const urlLink = (approvalDetailsLookup.includes(APPROVAL_TYPE_LOOKUP_CODE)) ? '/home/approvaldetails' : '/home/approvaldetailscar';
+    const urlLink = (approvalDetailsLookup.includes(APPROVAL_TYPE_LOOKUP_CODE)) ? 'NotificationDetails' : 'NotificationDetailsCarScreen';
     
-    const onChangeHandler = (value) => { 
-        
+   
+    const onChangeHandler = (value) => {
         const search = value.toLowerCase();
-        const filterData = tempApprovalList.filter((currentObj) => (currentObj.SUBJECT.toLowerCase().includes(search) 
+        const filterData = tempApprovalList.filter((currentObj) => (currentObj.SUBJECT.toLowerCase().includes(search)
             || currentObj.FROM_USER.toLowerCase().includes(search)));
-            console.log('value 123 ', value);
-            setApprovalList(filterData);
 
-        /**if(value && value === null) {
-            return 
-        }
-        console.log(search);
-        const search = value.toLowerCase();
-        const filterData = tempApprovalList.filter((currentObj) => (currentObj.SUBJECT.toLowerCase().includes(search) 
-            || currentObj.FROM_USER.toLowerCase().includes(search)));
-        setApprovalList(filterData);**/
+        setApprovalList(filterData);
     }
 
     useEffect(() => {
@@ -58,11 +49,18 @@ const PendingActionScreen = ({ route, navigation }) => {
         }
     }, [loggedInNTID, APPROVAL_TYPE_LOOKUP_CODE, FYI_FLAG, dispatch, approvalListValue]);
 
+    const renderItem = ({ item }) => {
+        const state = {
+            LOOKUP_CODE: APPROVAL_TYPE_LOOKUP_CODE, NOTIFICATION_ID: item.NOTIFICATION_ID,
+            SENDER: item.FROM_USER, SUBJECT: item.SUBJECT, FYI_FLAG: FYI_FLAG
+        };
+        return <Pressable onPress={() => navigate.navigate('NotificationDetails', state)}>
+            <RenderCard item={item}></RenderCard>
+        </Pressable>
+    }
+
    
-    const renderItem = ({ item }) => (
-        <Pressable onPress={() => navigate.navigate("NotificationDetails")}><RenderCard item={item}></RenderCard></Pressable>
-    );
-    
+   
     return (<>
         <View style={homeScreenStyle.pendingActions.filterContainer}>
             <TextInput style={homeScreenStyle.pendingActions.input} onChangeText={(event) => onChangeHandler(event)}  placeholder="Type here to filter" />
