@@ -39,8 +39,7 @@ const MainStackNavigator = () => {
             <Stack.Screen name="HomeNavigator" component={HomeScreen} options={{ headerShown: true, headerLeft: HeaderLeftBar, title: 'Home', headerTitleAlign: 'center' }} />
             <Stack.Screen name="PendingAction" component={PendingActionScreen} options={{ headerShown: true, title: 'Pending Action', headerTitleAlign: 'center' }} />
             <Stack.Screen name="NotificationDetails" component={NotificationDetailsScreen} options={{ headerShown: true, title: 'Notification Details', headerTitleAlign: 'center' }} />
-            <Stack.Screen name="NotificationDetailsCar" component={NotificationDetailsCarScreen} 
-                options={{ headerShown: true, title: 'Notification Car Details', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="NotificationCar" component={NotificationDetailsCarScreen} options={{ headerShown: true, title: 'Notification Car', headerTitleAlign: 'center' }} />
             <Stack.Screen name="Lines" component={LinesScreen} options={{ headerShown: true, title: 'Lines', headerTitleAlign: 'center' }} />
             <Stack.Screen name="ActionHistory" component={ActionHistoryScreen} options={{ headerShown: true, title: 'Action History', headerTitleAlign: 'center' }} />
             <Stack.Screen name="Attachment" component={AttachmentScreen} options={{ headerShown: true, title: 'Attachments', headerTitleAlign: 'center' }} />

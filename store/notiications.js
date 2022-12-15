@@ -99,7 +99,7 @@ export const selectRejectionReason = (state) => state.notification.rejectionReas
 
 export const selectReportId = createSelector([selectNotification, (selectNotification, category) => category], 
   (notification, category) => {
-    const selectedNotification = notification.find((current) => current.APPROVAL_TYPE_LOOKUP_CODE.toLowerCase() === category);
+    const selectedNotification = notification.find((current) => current.APPROVAL_TYPE_LOOKUP_CODE === category);
     return (selectedNotification) ? selectedNotification.ReportID : null;
 });
 

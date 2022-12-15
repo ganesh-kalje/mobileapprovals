@@ -19,7 +19,7 @@ const RenderCard = ({ item }) => {
 const PendingActionScreen = ({ route, navigation }) => {
     const navigate = useNavigation();
     const dispatch = useDispatch();
-    const APPROVAL_TYPE_LOOKUP_CODE = route.params.APPROVAL_TYPE_LOOKUP_CODE;
+    const APPROVAL_TYPE_LOOKUP_CODE = route.params.APPROVAL_TYPE_LOOKUP_CODE.toUpperCase();
     const approvalListSelector = useSelector((state) => selectApprovalList(state, APPROVAL_TYPE_LOOKUP_CODE));
     const approvalListValue = (approvalListSelector) ? approvalListSelector.approvalList : null;
 
@@ -28,7 +28,7 @@ const PendingActionScreen = ({ route, navigation }) => {
     const [approvalList, setApprovalList] = useState([]);
     const [tempApprovalList, setTempApprovalList] = useState([]);
     const approvalDetailsLookup = ['REQAPPRV', 'APINVAPR', 'CMAPPR', 'POREQCHA'];
-    const urlLink = (approvalDetailsLookup.includes(APPROVAL_TYPE_LOOKUP_CODE)) ? 'NotificationDetails' : 'NotificationDetailsCarScreen';
+    const urlLink = (approvalDetailsLookup.includes(APPROVAL_TYPE_LOOKUP_CODE)) ? 'NotificationDetails' : 'NotificationCar';
     
    
     const onChangeHandler = (value) => {
@@ -54,7 +54,7 @@ const PendingActionScreen = ({ route, navigation }) => {
             LOOKUP_CODE: APPROVAL_TYPE_LOOKUP_CODE, NOTIFICATION_ID: item.NOTIFICATION_ID,
             SENDER: item.FROM_USER, SUBJECT: item.SUBJECT, FYI_FLAG: FYI_FLAG
         };
-        return <Pressable onPress={() => navigate.navigate('NotificationDetails', state)}>
+        return <Pressable onPress={() => navigate.navigate(urlLink, state)}>
             <RenderCard item={item}></RenderCard>
         </Pressable>
     }

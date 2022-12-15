@@ -14,8 +14,9 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
     const navigate = useNavigation();
     const dispatch = useDispatch();
     const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
-    const LOOKUP_CODE = route.params.LOOKUP_CODE;
-    const NOTIFICATION_ID = route.params.NOTIFICATION_ID;
+    const LOOKUP_CODE = route.params.LOOKUP_CODE.toUpperCase();
+    // const NOTIFICATION_ID = route.params.NOTIFICATION_ID;
+    const NOTIFICATION_ID = "69989414";
     const SENDER = route.params.SENDER;
     const SUBJECT = route.params.SUBJECT;
     const FYI_FLAG = route.params.FYI_FLAG;
@@ -39,10 +40,11 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
     const justificationState = { SUBJECT,SENDER, DOCUMENT_ID};
     const lineState = { SUBJECT,SENDER, LOOKUP_CODE, NOTIFICATION_ID, NOTIFICATION_STATUS};
     
-    const header = (LOOKUP_CODE === 'APINVAPR') ? approvalDetails.INVOICE_NUMBER : SENDER;
+    const header = (LOOKUP_CODE === 'APINVAPR' && approvalDetails !== null) ? approvalDetails.INVOICE_NUMBER : SENDER;
     const subHeader = (LOOKUP_CODE === 'CMAPPR') ? NOTIFICATION_ID : '';
 
     
+
     useEffect(() => {
         if (ReportId !== null && approvalDetails === null) {
             const requestInput = {NOTIFICATION_ID: NOTIFICATION_ID, APPROVAL_TYPE_LOOKUP_CODE: LOOKUP_CODE,NOTIFICATION_STATUS, NTID: loggedInNTID}
@@ -59,13 +61,43 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
                     <Text style={homeScreenStyle.notificationDetails.mainHeader}>Invoice Source</Text>
                     <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>{approvalDetails.INVOICE_SOURCE}</Text>
                 </>}
+
+                {LOOKUP_CODE === 'APINVAPR' && DisplayHelper.isValid(approvalDetails.AMOUNT) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Amount</Text>
+                    <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>{DisplayHelper.amountFormat(approvalDetails.AMOUNT)}</Text>
+                </>}
+
+                {LOOKUP_CODE === 'APINVAPR' && DisplayHelper.isValid(approvalDetails.SUPPLIER) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Supplier</Text>
+                    <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>{DisplayHelper.amountFormat(approvalDetails.SUPPLIER)}</Text>
+                </>}
+
+                {LOOKUP_CODE === 'APINVAPR' && DisplayHelper.isValid(approvalDetails.INVOICE_DATE) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Invoice Date</Text>
+                    <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>{DisplayHelper.amountFormat(approvalDetails.INVOICE_DATE)}</Text>
+                </>}
+
+                {LOOKUP_CODE !== 'APINVAPR' && DisplayHelper.isValid(approvalDetails.HEADER_DESCRIPTION) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Description</Text>
+                    <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>{DisplayHelper.amountFormat(approvalDetails.HEADER_DESCRIPTION)}</Text>
+                </>}
+
+
+                {LOOKUP_CODE !== 'APINVAPR' && LOOKUP_CODE !== 'CMAPPR' && DisplayHelper.isValid(approvalDetails.JUSTIFICATION) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Justification</Text>
+                    <p>{approvalDetails.JUSTIFICATION}</p>
+                </>}
+
+                {DisplayHelper.isValid(approvalDetails.EXCESS_MSG) && <>
+                    <Text style={homeScreenStyle.notificationDetails.mainHeader}>Information</Text>
+                    <p>{approvalDetails.EXCESS_MSG}</p>
+                </>}
             </>}
             
 
-            
+           
 
-            <Text style={homeScreenStyle.notificationDetails.mainHeader}>Amount</Text>
-            <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>5.025.00</Text>
+           
 
             <Text style={homeScreenStyle.notificationDetails.mainHeader}>Supplier</Text>
             <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>TECH SYSTEM INC</Text>
