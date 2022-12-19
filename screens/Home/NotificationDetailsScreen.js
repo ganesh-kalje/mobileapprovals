@@ -35,13 +35,16 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
         DOCUMENT_ID = approvalDetails.DOCUMENT_ID
     } 
     
+    const header = (LOOKUP_CODE === 'APINVAPR' && approvalDetails !== null) ? approvalDetails.INVOICE_NUMBER : SENDER;
+    const subHeader = (LOOKUP_CODE === 'CMAPPR') ? NOTIFICATION_ID : '';
+
     const NOTIFICATION_STATUS = (FYI_FLAG === "Y") ? "CLOSED" : "OPEN";
     const actionHistoryState = { SUBJECT,SENDER, LOOKUP_CODE, NOTIFICATION_ID, DOCUMENT_ID};
     const justificationState = { SUBJECT,SENDER, DOCUMENT_ID};
-    const lineState = { SUBJECT,SENDER, LOOKUP_CODE, NOTIFICATION_ID, NOTIFICATION_STATUS};
+    const lineState = { SUBJECT,SENDER, LOOKUP_CODE, NOTIFICATION_ID, NOTIFICATION_STATUS, header};
     
-    const header = (LOOKUP_CODE === 'APINVAPR' && approvalDetails !== null) ? approvalDetails.INVOICE_NUMBER : SENDER;
-    const subHeader = (LOOKUP_CODE === 'CMAPPR') ? NOTIFICATION_ID : '';
+    
+    
 
     
 
@@ -93,19 +96,9 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
                     <p>{approvalDetails.EXCESS_MSG}</p>
                 </>}
             </>}
-            
-
-           
-
-           
-
-            <Text style={homeScreenStyle.notificationDetails.mainHeader}>Supplier</Text>
-            <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>TECH SYSTEM INC</Text>
-            <Text style={homeScreenStyle.notificationDetails.mainHeader}>Invoice Date</Text>
-            <Text style={homeScreenStyle.notificationDetails.descriptionSpan}>02-Sep-2022</Text>
         </View>
 
-        <Pressable onPress={() => navigate.navigate("Lines")}>
+        <Pressable onPress={() => navigate.navigate("Lines", lineState)}>
             <View style={homeScreenStyle.notificationDetails.actionLink}>
                 <Text style={homeScreenStyle.notificationDetails.actionLinkText}>Lines</Text>
                 <AntDesign style={homeScreenStyle.notificationDetails.arrowIcon} name="right" size={15} color="#2b9cd8" />
