@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image, Modal, TextInput } from "react-native";
+import { View, Text, Pressable, Image, Modal, TextInput, Platform } from "react-native";
 import React, { useState } from "react";
 import { homeScreenStyle } from '../../styles/global';
 
@@ -14,7 +14,8 @@ const Actions = () => {
                         <Text style={homeScreenStyle.actionScren.modalText}>APPROVE</Text>
                         <View>
                             <Text style={homeScreenStyle.actionScren.label}>Comments:</Text>
-                            <TextInput multiline={true} style={homeScreenStyle.actionScren.textArea} numberOfLines={5} />
+                            <TextInput multiline={true} style={homeScreenStyle.actionScren.textArea} 
+                                numberOfLines={Platform.OS === 'ios' ? null : 5 } minHeight={(Platform.OS === 'ios' && 5) ? (20 * 5) : null}  />
                         </View>
                         <View style={homeScreenStyle.actionScren.buttonContainer}>
                             <Pressable style={[homeScreenStyle.actionScren.modalButton, homeScreenStyle.actionScren.modalButton.rightButtonBorder]} onPress={() => setModalVisible(!modalVisible)}>

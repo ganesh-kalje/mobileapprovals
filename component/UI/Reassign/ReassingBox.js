@@ -12,8 +12,6 @@ const ReassingBox = () => {
     return <>
         <TextInput placeholder='All Employees and Users' style={[styles.textInput, { width: '90%', borderRightWidth: 0, }]} />
         <Pressable onPress={() => navigateScreen()} style={[styles.textInputIcon]}><Text >...</Text></Pressable>
-        
-       
     </>
 }
 

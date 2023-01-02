@@ -1,4 +1,4 @@
-import { Text, View, Button,  TextInput, Pressable, Image } from 'react-native';
+import { Text, View, Button,  TextInput, Pressable, Image, Platform } from 'react-native';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 import ReassingBox from '../UI/Reassign/ReassingBox';
 import { delegationRuleStyle } from '../../styles/global';
@@ -64,7 +64,7 @@ const CreateRuleScreen = () => {
     const approvalTypeList = rulesSelector.approvalList;
     const [value, setValue] = useState(null);
     /// const [isFocus, setIsFocus] = useState(false);
-    console.log(resultSelector.formObj);
+    // console.log(resultSelector.formObj);
     
     const radio_props = [ {label: 'Delegate', value: 0 } ];
 
@@ -107,7 +107,10 @@ const CreateRuleScreen = () => {
 
             <View>
                 <Text style={delegationRuleStyle.createRuleScreen.label}>Notes:</Text>
-                <TextInput multiline={true} onChangeText={(event) => handleFormChange(event, 'notes')} style={delegationRuleStyle.createRuleScreen.textArea} numberOfLines={5} />
+                <TextInput multiline={true} onChangeText={(event) => handleFormChange(event, 'notes')} 
+                    numberOfLines={Platform.OS === 'ios' ? null : 5 } 
+                    minHeight={(Platform.OS === 'ios' && 5) ? (20 * 5) : null} 
+                    style={delegationRuleStyle.createRuleScreen.textArea}  />
             </View>
 
             <View style={{marginBottom: 20}}>
