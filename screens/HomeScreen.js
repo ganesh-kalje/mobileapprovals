@@ -11,6 +11,19 @@ const HomeScreen = ({ navigation }) => {
     const notifications = useSelector(selectNotification);
     const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
     const dispatch = useDispatch();
+
+    const setFilterData = (filterState) => {
+        //A = All, Y = fyi, N = Actionable
+        let fyiflag = 'N';
+        if(filterState.All) {
+            fyiflag = 'A'
+        } else if (filterState.Actionable) {
+            fyiflag = 'N';
+        } else if(filterState.FYI) {
+            fyiflag = 'Y'
+        }
+        dispatch(fetchNotifications({ NTID: loggedInNTID, FYI_FLAG: fyIFlag, SourceSystem: "WORKLIST" }));
+    }
     
     useEffect(() => {
         if (notifications === null) {
@@ -24,7 +37,7 @@ const HomeScreen = ({ navigation }) => {
 
     return (
         <>
-            <Filter></Filter>
+            <Filter setFilterData={setFilterData}></Filter>
             <SafeAreaView>
                 <FlatList data={notifications} renderItem={renderItem} keyExtractor={item => item.APPROVAL_TYPE_LOOKUP_CODE} />
             </SafeAreaView>

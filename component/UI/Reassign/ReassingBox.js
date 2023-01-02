@@ -5,7 +5,7 @@ const ReassingBox = () => {
     const navigate = useNavigation();
     
     const navigateScreen = () => {
-        console.log('details qw')
+        //console.log('details qw')
         navigate.navigate('SearchUserRoot', { screen: 'SearchUserNavigator' })
     }
     
