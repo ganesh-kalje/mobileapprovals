@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import {containerStyle, uiComponentStyle} from './container';
+import { Dimensions, TouchableHighlight, Text } from 'react-native';
 
 export const searchScreenStyle = StyleSheet.create({
     container: {
@@ -87,16 +88,17 @@ export const homeScreenStyle = StyleSheet.create({
             paddingBottom: 20
         },
         infoSpanCounter: {
-            width: 32.5,
-            height: 32.5,
-            borderRadius: 50,
+            width: 40.5,
+            height: 40.5,
+            borderRadius: 20,
             backgroundColor: '#fff',
-            borderColor: '#646a70',
+            borduerColor: '#646a70',
             color: '#646a70',
             borderWidth: 1,
             right: 10,
-            top: 10,
+            top: 19,
             fontSize: 18,
+            paddingTop: 5,
             textAlign: 'center',
         },
         infoSpanArrow: {
@@ -138,19 +140,20 @@ export const homeScreenStyle = StyleSheet.create({
             fontWeight: '400',
         },
         infoSpanCounter: {
-            width: 32.5,
-            height: 32.5,
-            borderRadius: 50,
+            width: 40.5,
+            height: 40.5,
+            borderRadius: 20,
             borderWidth: 1,
-            right: 10,
-            top: 0,
-            fontSize: 18,
-            textAlign: 'center',
-            marginLeft: 20,
-            marginRight: 20,
+            marginLeft: 15,
+            marginRight: 15,
             backgroundColor: '#2B9CD8',
             borderColor: '#646a70',
-            color: '#fff',
+            textContent: {
+                fontSize: 18,
+                color: '#fff',
+                textAlign: 'center',
+                paddingTop: 8
+            }
         },
         headerSpan: {
             color: '#00619a',
@@ -341,6 +344,7 @@ export const homeScreenStyle = StyleSheet.create({
             flexDirection: 'row',
             justifyContent: "space-between",
             alignItems: 'center',
+            marginBottom: 20
         }
     },
     notificationHeaderSection: {

@@ -30,7 +30,7 @@ const Filter = () => {
                 <View style={homeScreenStyle.filterSection.filterOption}>
                     <Text style={homeScreenStyle.filterSection.ValueLable}>All</Text>
 
-                    <Switch trackColor={{ false: "#2b9cd8", true: "#fff" }}
+                    <Switch  trackColor={{ false: "#2b9cd8", true: "#fff" }}
                         thumbColor={true ? "#2b9cd8" : "#fff"} value={true} />
                 </View>
 

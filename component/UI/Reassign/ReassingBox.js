@@ -3,9 +3,15 @@ import { useNavigation } from '@react-navigation/native';
 
 const ReassingBox = () => {
     const navigate = useNavigation();
+    
+    const navigateScreen = () => {
+        console.log('details qw')
+        navigate.navigate('SearchUserRoot', { screen: 'SearchUserNavigator' })
+    }
+    
     return <>
         <TextInput placeholder='All Employees and Users' style={[styles.textInput, { width: '90%', borderRightWidth: 0, }]} />
-        <Pressable onPress={() => navigate.navigate("SearchUserNavigator")} style={[styles.textInputIcon]}><Text >...</Text></Pressable>
+        <Pressable onPress={() => navigateScreen()} style={[styles.textInputIcon]}><Text >...</Text></Pressable>
         
        
     </>

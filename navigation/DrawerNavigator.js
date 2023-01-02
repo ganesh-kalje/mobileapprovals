@@ -5,8 +5,10 @@ import TabNavigator from "./TabNavigator";
 import { Image } from 'react-native';
 
 import CustomDrawerContent from "../component/UI/CustomDrawerContent";
+import HelpScreen from "../screens/HelpScreen";
 
 const Drawer = createDrawerNavigator();
+
 
 
 
