@@ -7,8 +7,10 @@ import { selectApprovalList, fetchApprovalList } from "../../store/notiications"
 
 const RenderCard = ({ item }) => {
     return <View style={[homeScreenStyle.pendingActions.card, homeScreenStyle.pendingActions.shadowProp, homeScreenStyle.pendingActions.cardWrapper]}>
-        <Text style={homeScreenStyle.pendingActions.infoSpanCounter}> {(item.FROM_USER == null) ? "!" : item.FROM_USER.slice(0, 1)}</Text>
-        <View>
+        <View style={homeScreenStyle.pendingActions.infoSpanCounter}>
+            <Text style={homeScreenStyle.pendingActions.infoSpanCounter.textContent}>{(item.FROM_USER == null) ? "!" : item.FROM_USER.slice(0, 1)}</Text>
+        </View>
+        <View style={{marginLeft: 10}}>
             <Text style={homeScreenStyle.pendingActions.headerSpan}>{item.FROM_USER}</Text>
             <Text style={homeScreenStyle.pendingActions.descriptionSpan}>{item.SUBJECT}</Text>
         </View>
@@ -29,8 +31,8 @@ const PendingActionScreen = ({ route, navigation }) => {
     const [tempApprovalList, setTempApprovalList] = useState([]);
     const approvalDetailsLookup = ['REQAPPRV', 'APINVAPR', 'CMAPPR', 'POREQCHA'];
     const urlLink = (approvalDetailsLookup.includes(APPROVAL_TYPE_LOOKUP_CODE)) ? 'NotificationDetails' : 'NotificationCar';
-    
-   
+
+
     const onChangeHandler = (value) => {
         const search = value.toLowerCase();
         const filterData = tempApprovalList.filter((currentObj) => (currentObj.SUBJECT.toLowerCase().includes(search)
@@ -59,14 +61,14 @@ const PendingActionScreen = ({ route, navigation }) => {
         </Pressable>
     }
 
-   
-   
+
+
     return (<>
         <View style={homeScreenStyle.pendingActions.filterContainer}>
-            <TextInput style={homeScreenStyle.pendingActions.input} onChangeText={(event) => onChangeHandler(event)}  placeholder="Type here to filter" />
+            <TextInput style={homeScreenStyle.pendingActions.input} onChangeText={(event) => onChangeHandler(event)} placeholder="Type here to filter" />
         </View>
         <SafeAreaView>
-            <FlatList data={approvalList} renderItem={renderItem} keyExtractor={item => item.NOTIFICATION_ID } />
+            <FlatList data={approvalList} renderItem={renderItem} keyExtractor={item => item.NOTIFICATION_ID} />
         </SafeAreaView>
 
     </>)

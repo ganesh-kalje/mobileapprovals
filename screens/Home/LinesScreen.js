@@ -57,6 +57,7 @@ const LinesScreen = ({ route, navigation }) => {
                 APPROVAL_TYPE_LOOKUP_CODE: LOOKUP_CODE, NOTIFICATION_ID: NOTIFICATION_ID,
                 NOTIFICATION_STATUS: NOTIFICATION_STATUS, NTID: loggedInNTID, PAGE_NUMBER: pageNumber
             };
+            //console.log(requestInput);
             dispatchLines(fetchLineRecords(requestInput));
         }
     }, [LOOKUP_CODE, NOTIFICATION_ID, loggedInNTID, NOTIFICATION_STATUS, pageNumber]);

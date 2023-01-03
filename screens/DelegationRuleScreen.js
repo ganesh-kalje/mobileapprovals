@@ -7,6 +7,8 @@ import SearchUserScreen from "../component/UI/Reassign/SearchUserScreen";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchRules,fetchItemsType } from '../store/delegation-rules';
+import SearchUserRoot from '../navigation/SearchUserNavigator';
+
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -54,7 +56,7 @@ const DelegationRuleScreen = ({ navigation }) => {
         <NavigationContainer independent={true} >
             <Stack.Navigator>
                 <Stack.Screen name="Root" component={Root} options={{ headerShown: false }} />
-                <Stack.Screen name="SearchUserNavigator" component={SearchUserScreen} options={{ headerShown: true, title: 'Search and Select User'}}/>
+                <Stack.Screen name="SearchUserRoot" component={SearchUserRoot} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

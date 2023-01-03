@@ -55,7 +55,7 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
         }
     }, [LOOKUP_CODE, NOTIFICATION_ID, ReportId, loggedInNTID, NOTIFICATION_STATUS, approvalDetails, dispatch]);
 
-    return <View style={[homeScreenStyle.notificationDetails.card, homeScreenStyle.notificationDetails.shadowProp, {flex: 1}]}>
+    return <><View style={[homeScreenStyle.notificationDetails.card, homeScreenStyle.notificationDetails.shadowProp, {flex: 1}]}>
         <NotificationHeader header={header} subHeader={subHeader} SUBJECT={SUBJECT}  ></NotificationHeader>
 
         <View style={{ paddingTop: 5, borderBottomWidth: 1, borderColor: '#dde3e6' }}>
@@ -119,8 +119,10 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
             </View>
         </Pressable>
 
-        <Actions></Actions>
+        <Actions LOOKUP_CODE={LOOKUP_CODE} NOTIFICATION_ID={NOTIFICATION_ID} approvalDetails={approvalDetails}></Actions>
     </View>
+    
+    </>
 }
 
 
