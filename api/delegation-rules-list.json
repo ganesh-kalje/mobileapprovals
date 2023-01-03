@@ -456,5 +456,59 @@
           "STATE_OF_SERVICES" : "VA",
           "STATE_OF_SERV_INFO" : null
         } ]
+    },
+    "GetRejectionReason": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11240899, DateTime : 01/03/2023 01:51:51 AM",
+        "OutputType": [
+          {
+            "LOOKUP_CODE": "DUPLICATE/CANCEL",
+            "MEANING": "Duplicate/Cancel"
+          },
+          {
+            "LOOKUP_CODE": "INCORRECT GL STRING",
+            "MEANING": "Incorrect GL String (Corp Only)"
+          },
+          {
+            "LOOKUP_CODE": "INCORRECT INITIATOR",
+            "MEANING": "Incorrect Initiator"
+          },
+          {
+            "LOOKUP_CODE": "INCORRECT INVOICE DATE",
+            "MEANING": "Incorrect Invoice Date(Corp Only)"
+          },
+          {
+            "LOOKUP_CODE": "MISSING IMAGE",
+            "MEANING": "Missing Image (Corp Only)"
+          },
+          {
+            "LOOKUP_CODE": "NOT APPLICABLE",
+            "MEANING": "Not Applicable"
+          },
+          {
+            "LOOKUP_CODE": "INCORRECT INVOICE AMOUNT",
+            "MEANING": "Incorrect Invoice Amount"
+          },
+          {
+            "LOOKUP_CODE": "INCORRECT INVOICE NUMBER",
+            "MEANING": "Incorrect Invoice Number"
+          },
+          {
+            "LOOKUP_CODE": "INCORRECT VENDOR NAME",
+            "MEANING": "Incorrect Vendor Name"
+          },
+          {
+            "LOOKUP_CODE": "PAID BY PCARD",
+            "MEANING": "Paid by One Card"
+          },
+          {
+            "LOOKUP_CODE": "PO NUMBER REQUIRED",
+            "MEANING": "Po Number Required"
+          },
+          {
+            "LOOKUP_CODE": "UNABLE TO APPROVE",
+            "MEANING": "Unable to Approve"
+          }
+        ]
       }
 }

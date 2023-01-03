@@ -228,6 +228,11 @@ export const homeScreenStyle = StyleSheet.create({
         }
     },
     actionScren: {
+        dropdown: uiComponentStyle.dropDown.dropdown,
+        icon: uiComponentStyle.dropDown.dropdown,
+        placeholderStyle: uiComponentStyle.dropDown.placeholderStyle,
+        selectedTextStyle: uiComponentStyle.dropDown.selectedTextStyle,
+        iconStyle: uiComponentStyle.dropDown.iconStyle,
         bottomContainer: {
             flex: 1,
             justifyContent: 'flex-end',
@@ -244,6 +249,7 @@ export const homeScreenStyle = StyleSheet.create({
         },
         btnApr: {
             color: '#47c684',
+            
         },
         btnRjt: {
             color: '#FB5438',
