@@ -50,7 +50,7 @@ export const fetchApprovalList = createAsyncThunk('posts/fetchApprovalList', asy
  */
 export const fetchLineRecords = createAsyncThunk('posts/fetchLineRecords', async (postObj) => {
   // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationDetails/CIFANotificationDetailsRest/GetLineDetails`;
-  const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetNotificationDetails.json';
+  const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetLineDetails.json';
   const response = await axios.get(urlToCall);
  
   // const response = await axios.post(urlToCall, postObj);
@@ -96,7 +96,7 @@ const notificationSlice = createSlice({
       state.rejectionReason.lookupCode = (action.meta.arg !== null) ? action.meta.arg.APPROVAL_TYPE_CODE : null;
       state.rejectionReason.rejectionReasonList = action.payload;
     }).addCase(fetchLineRecords.fulfilled, (state, action) => {
-      // console.log('in extrta reducer ', action.payload);
+      state.lineRecords = action.payload;
     })
   }
 });

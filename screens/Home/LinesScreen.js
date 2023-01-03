@@ -5,6 +5,7 @@ import { homeScreenStyle } from '../../styles/global';
 import React, { useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLineRecords } from "../../store/notiications";
+import ListTemplate from "../../component/Home/ListTemplate";
 
 
 const initialRequest = { PAGE_NUMBER: 1, lines: [], selectedLines: '' };
@@ -29,6 +30,9 @@ const LinesScreen = ({ route, navigation }) => {
     const [requestState, dispatch] = useReducer(reducer, initialRequest);
     const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
     const dispatchLines = useDispatch();
+    const lineRecords = useSelector((state) => state.notification.lineRecords);
+    
+
 
 
     const SENDER = route.params.SENDER;
@@ -44,7 +48,7 @@ const LinesScreen = ({ route, navigation }) => {
     const pageNumber = requestState.PAGE_NUMBER;
     const nextButtonHandler = () => dispatch({ type: "NEXT" });
     const preButtonHandler = () => dispatch({ type: "PRE" });
-
+    
 
 
     React.useEffect(() => {
@@ -53,43 +57,16 @@ const LinesScreen = ({ route, navigation }) => {
                 APPROVAL_TYPE_LOOKUP_CODE: LOOKUP_CODE, NOTIFICATION_ID: NOTIFICATION_ID,
                 NOTIFICATION_STATUS: NOTIFICATION_STATUS, NTID: loggedInNTID, PAGE_NUMBER: pageNumber
             };
-            console.log(requestInput);
             dispatchLines(fetchLineRecords(requestInput));
         }
     }, [LOOKUP_CODE, NOTIFICATION_ID, loggedInNTID, NOTIFICATION_STATUS, pageNumber]);
 
     const renderItem = ({ item }) => {
-        <View style={[homeScreenStyle.lineScreen.boxItem]}>
-            <View style={{ alignItems: 'flex-end' }}>
-                <AntDesign name="down" size={20} color="#00619a" />
-            </View>
-            <View style={[homeScreenStyle.lineScreen.row]}>
-                <Text style={homeScreenStyle.lineScreen.labelStyle}>Line #</Text>
-                <Text style={homeScreenStyle.lineScreen.valueStyle}>1</Text>
-            </View>
-
-            <View style={[homeScreenStyle.lineScreen.row]}>
-                <Text style={homeScreenStyle.lineScreen.labelStyle}>Amount</Text>
-                <Text style={homeScreenStyle.lineScreen.valueStyle}>4850</Text>
-            </View>
-
-            <View style={[homeScreenStyle.lineScreen.row]}>
-                <Text style={homeScreenStyle.lineScreen.labelStyle}>Description</Text>
-                <Text style={homeScreenStyle.lineScreen.valueStyle}>Typesetting industry. Lorem Ipsum has been the industry's</Text>
-            </View>
-
-            <View style={homeScreenStyle.lineScreen.separator}></View>
-
-            <View style={[homeScreenStyle.lineScreen.row]}>
-                <Text style={homeScreenStyle.lineScreen.labelStyle}>Distribution #</Text>
-                <Text style={homeScreenStyle.lineScreen.valueStyle}>1</Text>
-            </View>
-
-            <View style={[homeScreenStyle.lineScreen.row]}>
-                <Text style={homeScreenStyle.lineScreen.labelStyle}>GL Description</Text>
-                <Text style={homeScreenStyle.lineScreen.valueStyle}>Typesetting industry. Lorem Ipsum has been the industry's</Text>
-            </View>
-        </View>
+        return <>
+            {LOOKUP_CODE === 'APINVAPR' && <ListTemplate infoObj={infoObj} lineDetailObj={item}></ListTemplate>}
+            {LOOKUP_CODE === 'REQAPPRV' && <></>}
+            {(LOOKUP_CODE === 'POREQCHA' || LOOKUP_CODE === 'PORPOCHA') && <></>}
+        </>
     }
 
 
@@ -97,10 +74,10 @@ const LinesScreen = ({ route, navigation }) => {
         <NotificationHeader header={header} subHeader={subHeader} SUBJECT={SUBJECT}  ></NotificationHeader>
 
         <SafeAreaView>
-            <FlatList data={requestState.lines} renderItem={renderItem} keyExtractor={item => item.RULE_ID} />
+            <FlatList data={lineRecords} renderItem={renderItem} keyExtractor={item => item.LINE_NUMBER} />
         </SafeAreaView>
 
-        {!(requestState.PAGE_NUMBER === 1 && requestState.lines.length < 20) && <View style={{ flexDirection: 'row' }}>
+        {!(requestState.PAGE_NUMBER === 1 && lineRecords.length < 20) && <View style={{ flexDirection: 'row' }}>
             <Pressable disabled={requestState.PAGE_NUMBER === 1} onPress={() => { preButtonHandler() }} style={{ width: '50%', backgroundColor: '#2a2c2d', padding: 10, borderWidth: 0.5, borderTopLeftRadius: 20, borderBottomLeftRadius: 20, alignItems: 'center' }}>
                 <Text style={{ color: '#fff' }}>Previous</Text>
             </Pressable>
