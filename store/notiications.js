@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { async } from 'q';
 // import api from '../environment/api';
 
 /**
@@ -40,8 +41,9 @@ export const fetchApprovalList = createAsyncThunk('posts/fetchApprovalList', asy
  */
  export const fetchRejectionReasonList = createAsyncThunk('posts/fetchRejectionReasonList', async (postObj) => {
   // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationApproval/CIFANotificationApprovalRest/GetRejectionReason`;
-  const urlToCall = '';
-  const response = await axios.post(urlToCall, postObj);
+  const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetRejectionReason.json';
+  // const response = await axios.post(urlToCall, postObj);
+  const response = await axios.get(urlToCall);
   return (response.STATUS.toLowerCase() === 'success' && response.OutputType) ? response.OutputType : [];
 });
 

@@ -1,14 +1,14 @@
 import { View, Text, Pressable, Image, Modal, TextInput, Platform } from "react-native";
-import React, { useEffect, useReducer, useState } from "react";
-import { delegationRuleStyle, homeScreenStyle } from '../../styles/global';
+import React, { useEffect, useReducer } from "react";
+import {  homeScreenStyle } from '../../styles/global';
 import { Dropdown } from 'react-native-element-dropdown';
-import apiJson from '../../api/delegation-rules-list.json'
 import { useDispatch, useSelector } from "react-redux";
 import Toast from 'react-native-toast-message';
+import { selectRejectionReason, fetchRejectionReasonList } from "../../store/notiications";
 
 
 
-const data = apiJson.GetRejectionReason.OutputType;
+
 
 const initialRequest = {ACTION_TYPE: '', MODAL_STATE: false, FORM_DATA: {rejection_reason: '', comment: ''}};
 const reducer = (state, action) => {
@@ -29,6 +29,7 @@ const reducer = (state, action) => {
 const Actions = (props) => {
     const dispatchCall = useDispatch();
     const [stateSelector, dispatch] = useReducer(reducer, initialRequest);
+    const rejectionReason = useSelector(selectRejectionReason);
     const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
     const lookupCode = props.LOOKUP_CODE;
     const notificationId = props.NOTIFICATION_ID;
@@ -86,8 +87,16 @@ const Actions = (props) => {
     const handleClose = () => dispatch({type: 'SET_MODAL_STATE', modalState: false});
 
     useEffect(() => {
-
-    }, [lookupCode]);
+        console.log(rejectionReason);
+        const postObj = (lookupCode === "XXCMSTRA" || lookupCode === "XXCMSTOC") ? { APPROVAL_TYPE_CODE: lookupCode } : null;
+        if (rejectionReason.rejectionReasonList.length !== 0) {
+            if (rejectionReason.lookupCode === null && (lookupCode === "XXCMSTRA" || lookupCode === "XXCMSTOC")) {
+                dispatchCall(fetchRejectionReasonList(postObj))
+            }
+        } else if (rejectionReason.rejectionReasonList.length === 0) {
+            dispatchCall(fetchRejectionReasonList(postObj));
+        }
+    }, [lookupCode, rejectionReason, dispatchCall]);
     
     return (<>
         <View style={homeScreenStyle.actionScren.centeredView}>
@@ -105,7 +114,7 @@ const Actions = (props) => {
                                 placeholderStyle={homeScreenStyle.actionScren.placeholderStyle}
                                 selectedTextStyle={homeScreenStyle.actionScren.selectedTextStyle}
                                 iconStyle={homeScreenStyle.actionScren.iconStyle}
-                                data={data}
+                                data={rejectionReason.rejectionReasonList}
                                 maxHeight={300}
                                 labelField="MEANING"
                                 valueField="LOOKUP_CODE"
