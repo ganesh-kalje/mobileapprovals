@@ -3,12 +3,8 @@ import React, { useEffect, useReducer } from "react";
 import {  homeScreenStyle } from '../../styles/global';
 import { Dropdown } from 'react-native-element-dropdown';
 import { useDispatch, useSelector } from "react-redux";
-import Toast from 'react-native-toast-message';
 import { selectRejectionReason, fetchRejectionReasonList } from "../../store/notiications";
-
-
-
-
+import { useNavigation } from "@react-navigation/core";
 
 const initialRequest = {ACTION_TYPE: '', MODAL_STATE: false, FORM_DATA: {rejection_reason: '', comment: ''}};
 const reducer = (state, action) => {
@@ -27,6 +23,7 @@ const reducer = (state, action) => {
 }
 
 const Actions = (props) => {
+    const navigate = useNavigation();
     const dispatchCall = useDispatch();
     const [stateSelector, dispatch] = useReducer(reducer, initialRequest);
     const rejectionReason = useSelector(selectRejectionReason);
@@ -35,16 +32,9 @@ const Actions = (props) => {
     const notificationId = props.NOTIFICATION_ID;
     const approvalDetails = props.approvalDetails;
     const approvalId = (approvalDetails !== null && approvalDetails.APPROVAL_ID) ? approvalDetails.APPROVAL_ID : null;
-
-    const showToast = () => {
-        Toast.show({
-          type: 'success',
-          text1: 'Hello',
-          text2: 'This is some something'
-        });
-      }
+    const documentNumber = (approvalDetails !== null && approvalDetails.DOCUMENT_NUMBER) ? approvalDetails.DOCUMENT_NUMBER : null;
+    const moreAssignState = {lookupCode, notificationId, documentNumber};
     
-      
     const handleAction = (actionType) => {
         dispatch({type: 'SET_ACTION_TYPE', actionType: actionType});
         dispatch({type: 'SET_MODAL_STATE', modalState: true});
@@ -158,17 +148,19 @@ const Actions = (props) => {
                     <Text style={[homeScreenStyle.actionScren.button, homeScreenStyle.actionScren.btnRjt]}>Reject</Text>
                 </Pressable>
 
-                <Pressable android_ripple={homeScreenStyle.actionScren.btnReassing} onPress={() => { }} style={{ flexDirection: 'row' }}>
-                    <Image source={require('./../../assets/images/Reass.png')}
-                        fadeDuration={0} style={homeScreenStyle.actionScren.actionIcon}></Image>
-                    <Text style={[homeScreenStyle.actionScren.button, homeScreenStyle.actionScren.btnReassing]}>Reassign</Text>
-                </Pressable>
+                {lookupCode !== 'CMAPPR' && <>
+                    <Pressable android_ripple={homeScreenStyle.actionScren.btnReassing} onPress={() => navigate.navigate("Reassign", moreAssignState)} style={{ flexDirection: 'row' }}>
+                        <Image source={require('./../../assets/images/Reass.png')}
+                            fadeDuration={0} style={homeScreenStyle.actionScren.actionIcon}></Image>
+                        <Text style={[homeScreenStyle.actionScren.button, homeScreenStyle.actionScren.btnReassing]}>Reassign</Text>
+                    </Pressable>
 
-                <Pressable android_ripple={homeScreenStyle.actionScren.btnMoreInfo} onPress={() => { }} style={{ flexDirection: 'row' }}>
-                    <Image source={require('./../../assets/images/More_1.png')}
-                        fadeDuration={0} style={homeScreenStyle.actionScren.actionIcon}></Image>
-                    <Text style={[homeScreenStyle.actionScren.button, homeScreenStyle.actionScren.btnMoreInfo]}>More Info</Text>
-                </Pressable>
+                    <Pressable android_ripple={homeScreenStyle.actionScren.btnMoreInfo} onPress={() => navigate.navigate("RequestInfo", moreAssignState)} style={{ flexDirection: 'row' }}>
+                        <Image source={require('./../../assets/images/More_1.png')}
+                            fadeDuration={0} style={homeScreenStyle.actionScren.actionIcon}></Image>
+                        <Text style={[homeScreenStyle.actionScren.button, homeScreenStyle.actionScren.btnMoreInfo]}>More Info</Text>
+                    </Pressable>
+                </>}
             </View>
         </View>
     </>)

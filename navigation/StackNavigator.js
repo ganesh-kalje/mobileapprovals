@@ -15,6 +15,8 @@ import AttachmentScreen from "../screens/Home/AttachmentScreen";
 import HeaderLeftBar from "../component/UI/HeaderLeftSection";
 import SearchUserScreen from "../component/UI/Reassign/SearchUserScreen";
 import NotificationDetailsCarScreen from "../screens/Home/NotificationDetailsCarScreen";
+import Reassign from "../screens/Home/Reassign";
+import RequestInfo from "../screens/Home/RequestInfo";
 
 
 const Stack = createNativeStackNavigator();
@@ -43,7 +45,8 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Lines" component={LinesScreen} options={{ headerShown: true, title: 'Lines', headerTitleAlign: 'center' }} />
             <Stack.Screen name="ActionHistory" component={ActionHistoryScreen} options={{ headerShown: true, title: 'Action History', headerTitleAlign: 'center' }} />
             <Stack.Screen name="Attachment" component={AttachmentScreen} options={{ headerShown: true, title: 'Attachments', headerTitleAlign: 'center' }} />
-            
+            <Stack.Screen name="Reassign" component={Reassign} options={{ headerShown: true, title: 'Reassign', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="RequestInfo" component={RequestInfo} options={{ headerShown: true, title: 'RequestInfo', headerTitleAlign: 'center' }} />
         </Stack.Navigator>
     );
 }
