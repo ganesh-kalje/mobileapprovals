@@ -77,7 +77,6 @@ const Actions = (props) => {
     const handleClose = () => dispatch({type: 'SET_MODAL_STATE', modalState: false});
 
     useEffect(() => {
-        console.log(rejectionReason);
         const postObj = (lookupCode === "XXCMSTRA" || lookupCode === "XXCMSTOC") ? { APPROVAL_TYPE_CODE: lookupCode } : null;
         if (rejectionReason.rejectionReasonList.length !== 0) {
             if (rejectionReason.lookupCode === null && (lookupCode === "XXCMSTRA" || lookupCode === "XXCMSTOC")) {

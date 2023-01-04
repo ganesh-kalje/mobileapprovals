@@ -9,7 +9,7 @@ const Reassign = () => {
         <View style={{ margin: 10 }}>
             <Text style={homeScreenStyle.reassign.label}>Reassign To:</Text>
             <View style={{ flexDirection: "row" }}>
-                <ReassingBox></ReassingBox>
+                <ReassingBox screenName={'Reassign'}></ReassingBox>
             </View>
         </View>
 

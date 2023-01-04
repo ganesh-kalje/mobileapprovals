@@ -433,82 +433,140 @@
         ]
     },
     "GetNotificationDetails": {
-        "STATUS" : "SUCCESS",
-        "STATUS_MESSAGE" : "Records Extracted Successfully. Flow Id :11090034, DateTime : 12/14/2022 08:08:46 AM",
-        "NotificationDetailsOutput" : [ {
-          "FROM_USER" : "ADEYEMI, ABIOLA",
-          "SUBJECT" : "Reminder Mail :000145.00.350.56200 Invoice initiated to ADEYEMI, ABIOLA for Vendor PERFECTIONS JANITORIAL SERVICES for            $8,932.46 on Invoice 307 requires your approval.",
-          "AMOUNT" : "8932.46",
-          "SUPPLIER" : "PERFECTIONS JANITORIAL SERVICES",
-          "NTID" : "GKALJE035",
-          "NOTIFICATION_ID" : "69989414",
-          "APPROVAL_TYPE_LOOKUP_CODE" : "APINVAPR",
-          "INVOICE_SOURCE" : "GXS PORTAL",
-          "INVOICE_ID" : 97596277,
-          "INVOICE_DATE" : "18-AUG-2022",
-          "CURRENCY" : "USD",
-          "INVOICE_NUMBER" : "307",
-          "DOCUMENT_NUMBER" : "307",
-          "QUESTION" : null,
-          "ANSWER" : null,
-          "MORE_INFO_FLAG" : "N",
-          "REQ_INFO_RESPONDER" : "SENDER",
-          "STATE_OF_SERVICES" : "VA",
-          "STATE_OF_SERV_INFO" : null
-        } ]
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11090034, DateTime : 12/14/2022 08:08:46 AM",
+        "NotificationDetailsOutput": [
+            {
+                "FROM_USER": "ADEYEMI, ABIOLA",
+                "SUBJECT": "Reminder Mail :000145.00.350.56200 Invoice initiated to ADEYEMI, ABIOLA for Vendor PERFECTIONS JANITORIAL SERVICES for            $8,932.46 on Invoice 307 requires your approval.",
+                "AMOUNT": "8932.46",
+                "SUPPLIER": "PERFECTIONS JANITORIAL SERVICES",
+                "NTID": "GKALJE035",
+                "NOTIFICATION_ID": "69989414",
+                "APPROVAL_TYPE_LOOKUP_CODE": "APINVAPR",
+                "INVOICE_SOURCE": "GXS PORTAL",
+                "INVOICE_ID": 97596277,
+                "INVOICE_DATE": "18-AUG-2022",
+                "CURRENCY": "USD",
+                "INVOICE_NUMBER": "307",
+                "DOCUMENT_NUMBER": "307",
+                "QUESTION": null,
+                "ANSWER": null,
+                "MORE_INFO_FLAG": "N",
+                "REQ_INFO_RESPONDER": "SENDER",
+                "STATE_OF_SERVICES": "VA",
+                "STATE_OF_SERV_INFO": null
+            }
+        ]
     },
     "GetRejectionReason": {
         "STATUS": "SUCCESS",
         "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11240899, DateTime : 01/03/2023 01:51:51 AM",
         "OutputType": [
-          {
-            "LOOKUP_CODE": "DUPLICATE/CANCEL",
-            "MEANING": "Duplicate/Cancel"
-          },
-          {
-            "LOOKUP_CODE": "INCORRECT GL STRING",
-            "MEANING": "Incorrect GL String (Corp Only)"
-          },
-          {
-            "LOOKUP_CODE": "INCORRECT INITIATOR",
-            "MEANING": "Incorrect Initiator"
-          },
-          {
-            "LOOKUP_CODE": "INCORRECT INVOICE DATE",
-            "MEANING": "Incorrect Invoice Date(Corp Only)"
-          },
-          {
-            "LOOKUP_CODE": "MISSING IMAGE",
-            "MEANING": "Missing Image (Corp Only)"
-          },
-          {
-            "LOOKUP_CODE": "NOT APPLICABLE",
-            "MEANING": "Not Applicable"
-          },
-          {
-            "LOOKUP_CODE": "INCORRECT INVOICE AMOUNT",
-            "MEANING": "Incorrect Invoice Amount"
-          },
-          {
-            "LOOKUP_CODE": "INCORRECT INVOICE NUMBER",
-            "MEANING": "Incorrect Invoice Number"
-          },
-          {
-            "LOOKUP_CODE": "INCORRECT VENDOR NAME",
-            "MEANING": "Incorrect Vendor Name"
-          },
-          {
-            "LOOKUP_CODE": "PAID BY PCARD",
-            "MEANING": "Paid by One Card"
-          },
-          {
-            "LOOKUP_CODE": "PO NUMBER REQUIRED",
-            "MEANING": "Po Number Required"
-          },
-          {
-            "LOOKUP_CODE": "UNABLE TO APPROVE",
-            "MEANING": "Unable to Approve"
-          }
+            {
+                "LOOKUP_CODE": "DUPLICATE/CANCEL",
+                "MEANING": "Duplicate/Cancel"
+            },
+            {
+                "LOOKUP_CODE": "INCORRECT GL STRING",
+                "MEANING": "Incorrect GL String (Corp Only)"
+            },
+            {
+                "LOOKUP_CODE": "INCORRECT INITIATOR",
+                "MEANING": "Incorrect Initiator"
+            },
+            {
+                "LOOKUP_CODE": "INCORRECT INVOICE DATE",
+                "MEANING": "Incorrect Invoice Date(Corp Only)"
+            },
+            {
+                "LOOKUP_CODE": "MISSING IMAGE",
+                "MEANING": "Missing Image (Corp Only)"
+            },
+            {
+                "LOOKUP_CODE": "NOT APPLICABLE",
+                "MEANING": "Not Applicable"
+            },
+            {
+                "LOOKUP_CODE": "INCORRECT INVOICE AMOUNT",
+                "MEANING": "Incorrect Invoice Amount"
+            },
+            {
+                "LOOKUP_CODE": "INCORRECT INVOICE NUMBER",
+                "MEANING": "Incorrect Invoice Number"
+            },
+            {
+                "LOOKUP_CODE": "INCORRECT VENDOR NAME",
+                "MEANING": "Incorrect Vendor Name"
+            },
+            {
+                "LOOKUP_CODE": "PAID BY PCARD",
+                "MEANING": "Paid by One Card"
+            },
+            {
+                "LOOKUP_CODE": "PO NUMBER REQUIRED",
+                "MEANING": "Po Number Required"
+            },
+            {
+                "LOOKUP_CODE": "UNABLE TO APPROVE",
+                "MEANING": "Unable to Approve"
+            }
         ]
-      }
+    },
+    "SearchUser": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11231023, DateTime : 01/04/2023 02:34:02 AM",
+        "SearchUserOutput": [
+            {
+                "NTID": "MARORA201",
+                "EMPLOYEE_NAME": "ARORA, MEENAKSHI",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MGANGA200",
+                "EMPLOYEE_NAME": "GANGADARAN, MEENA",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MKANAG928",
+                "EMPLOYEE_NAME": "KA, MEENAKSHI SOUNDARI",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MKRISH203",
+                "EMPLOYEE_NAME": "KRISHNAMOORTHY, MEENA",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MNAGAR520",
+                "EMPLOYEE_NAME": "NAGARAJ, MEENATSHI",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MRAJAN200",
+                "EMPLOYEE_NAME": "RAJANI, MEENA",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MRAMAR938",
+                "EMPLOYEE_NAME": "RAMARAJ, MEENAKUMARI",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MSAMID883",
+                "EMPLOYEE_NAME": "SAMIDASS, MOHANA MEENASHI",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MSINGA368",
+                "EMPLOYEE_NAME": "SINGARAVELU, MEENATSHI",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            },
+            {
+                "NTID": "MSOLEI00",
+                "EMPLOYEE_NAME": "SOLEIMAN, MEENA",
+                "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
+            }
+        ]
+    }
 }

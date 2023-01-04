@@ -2,13 +2,13 @@ import { Text, View, TextInput, Pressable } from "react-native";
 import { homeScreenStyle } from "../../styles/global";
 
 import ReassingBox from "../../component/UI/Reassign/ReassingBox";
-const RequestInfo = () => {
-
+const RequestInfo = ({ route, navigation }) => {
+    console.log(route.params)
     return <View style={{ padding: 10 }}>
         <View style={{ margin: 10 }}>
             <Text style={homeScreenStyle.reassign.label}>Reassign Information Form:</Text>
             <View style={{ flexDirection: "row" }}>
-                <ReassingBox></ReassingBox>
+                <ReassingBox screenName={'RequestInfo'}></ReassingBox>
             </View>
         </View>
 

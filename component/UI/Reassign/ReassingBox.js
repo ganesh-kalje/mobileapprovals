@@ -1,12 +1,11 @@
 import { Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ReassingBox = () => {
+const ReassingBox = ({screenName}) => {
     const navigate = useNavigation();
     
     const navigateScreen = () => {
-        //console.log('details qw')
-        navigate.navigate('SearchUserRoot', { screen: 'SearchUserNavigator' })
+        navigate.navigate('SearchUserRoot', { screen: screenName });
     }
     
     return <>

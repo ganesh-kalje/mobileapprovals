@@ -116,7 +116,7 @@ const CreateRuleScreen = () => {
             <View style={{marginBottom: 20}}>
                 <Text style={delegationRuleStyle.createRuleScreen.label}>*Reassing To:</Text>
                 <View style={{flexDirection: "row"}}>
-                    <ReassingBox></ReassingBox>
+                    <ReassingBox screenName={'CreateRuleScreen'}></ReassingBox>
                 </View>
             </View>
 
