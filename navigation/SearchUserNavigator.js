@@ -8,8 +8,15 @@ function SearchUserRoot() {
     const navigate = useNavigation();
     return (
       <Stack.Navigator>
-            <Stack.Screen name="SearchUserNavigator" component={SearchUserScreen} options={{ headerShown: true, title: 'Search and Select User', 
-        headerLeft: () => <Pressable onPress={() => navigate.goBack(null)}><Text>Back</Text></Pressable>}}/>
+            <Stack.Screen name="SearchUserNavigator" component={SearchUserScreen} options={
+                { 
+                  headerStyle: { backgroundColor: '#00619a' },
+                  headerTintColor: 'white',
+                  drawerActiveTintColor: '#fff',
+                  drawerInactiveTintColor: '#fff',
+                  headerShown: true, 
+                  title: 'Search and Select User', 
+                }}/>
       </Stack.Navigator>
     );
 } 

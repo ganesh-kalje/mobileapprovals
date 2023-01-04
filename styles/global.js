@@ -370,5 +370,12 @@ export const homeScreenStyle = StyleSheet.create({
             borderStyle: 'solid',
             borderColor: '#dde3e6'
         }
+    },
+    reassign: {
+        textInput: uiComponentStyle.textInput,
+        textArea: uiComponentStyle.textArea,
+        label: uiComponentStyle.label,
+        buttonContainer: uiComponentStyle.button.buttonContainer,
+        buttonStlye: uiComponentStyle.button.buttonStlye,
     }
 })

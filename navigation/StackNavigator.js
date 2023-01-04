@@ -17,6 +17,7 @@ import SearchUserScreen from "../component/UI/Reassign/SearchUserScreen";
 import NotificationDetailsCarScreen from "../screens/Home/NotificationDetailsCarScreen";
 import Reassign from "../screens/Home/Reassign";
 import RequestInfo from "../screens/Home/RequestInfo";
+import SearchUserRoot from "./SearchUserNavigator";
 
 
 const Stack = createNativeStackNavigator();
@@ -47,6 +48,7 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Attachment" component={AttachmentScreen} options={{ headerShown: true, title: 'Attachments', headerTitleAlign: 'center' }} />
             <Stack.Screen name="Reassign" component={Reassign} options={{ headerShown: true, title: 'Reassign', headerTitleAlign: 'center' }} />
             <Stack.Screen name="RequestInfo" component={RequestInfo} options={{ headerShown: true, title: 'RequestInfo', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="SearchUserRoot" component={SearchUserRoot} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
