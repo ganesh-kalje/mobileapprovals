@@ -4,7 +4,9 @@ import axios from 'axios';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
-
+import StorageHelper from '../../../helpers/storage-helper';
+import { useDispatch } from 'react-redux';
+import { sessionDataActions } from '../../../store/session-data';
 
 const initialRequest = { searchKey: '', PAGE_NUMBER: 1, selectedUser: null, userResults: [], comments: '' };
 const reducer = (state, action) => {
@@ -29,13 +31,11 @@ const reducer = (state, action) => {
 const SearchUserScreen = ({ route, navigation }) => {
     const [text, onChangeText] = React.useState("");
     const [resultSelector, dispatch] = useReducer(reducer, initialRequest);
+    const dispatchCall = useDispatch();
     const { searchKey, PAGE_NUMBER, selectedUser, userResults } = resultSelector;
     const nav = useNavigation();
-    const searchButtonHandler = () => {
-        // setTimeout(dispatch({ type: "SEARCH", searchKey: text }), 3000);
-        dispatch({ type: "SEARCH", searchKey: text })
-    }
-
+    
+    const searchButtonHandler = () => dispatch({ type: "SEARCH", searchKey: text })
     const selectRecord = (selectedRecord) => dispatch({ type: "SELECT_USER", selectedUser: selectedRecord });
 
     const callBackSelection = () => {
@@ -43,7 +43,8 @@ const SearchUserScreen = ({ route, navigation }) => {
             console.error("Please select user.");
             return;
         }
-        nav.navigate("RequestInfo", selectedUser);
+        dispatchCall(sessionDataActions.saveSelectedUser(selectedUser));
+        nav.navigate("RequestInfo");
     }
 
     useEffect(() => {

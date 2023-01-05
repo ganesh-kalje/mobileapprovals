@@ -1,15 +1,39 @@
-import { Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { Text, TextInput, Pressable, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import AutocompleteInput  from 'react-native-autocomplete-input';
 
-const ReassingBox = ({screenName}) => {
+const ReassingBox = ({ screenName }) => {
     const navigate = useNavigation();
-    
+    const selectedSearchUser = useSelector((state) => state.sessionData.selectedSearchUser);
     const navigateScreen = () => {
         navigate.navigate('SearchUserRoot', { screen: screenName });
     }
-    
+
+    const ITEMS = [
+        'A New Hope',
+        'The Empire Strikes Back',
+        'Return of the Jedi',
+        'The Phantom Menace',
+        'Attack of the Clones',
+        'Revenge of the Sith',
+      ];
+
     return <>
-        <TextInput placeholder='All Employees and Users' style={[styles.textInput, { width: '90%', borderRightWidth: 0, }]} />
+        <AutocompleteInput 
+            data={ITEMS}
+            renderResultList={({ data, style }) => (
+                <View style={style}>
+                    {data.map((item, index) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <Text key={index}>{item}</Text>
+                    ))}
+                </View>
+            )}
+        />
+        <TextInput placeholder='All Employees and Users' value={(selectedSearchUser !== null ? selectedSearchUser.EMPLOYEE_NAME : '')} 
+            style={[styles.textInput, { width: '90%', borderRightWidth: 0, }]}
+        />
         <Pressable onPress={() => navigateScreen()} style={[styles.textInputIcon]}><Text >...</Text></Pressable>
     </>
 }
@@ -41,9 +65,6 @@ const styles = StyleSheet.create({
         height: 40,
         color: '#2b9cd8'
     }
-   
-
-
 });
 
 export default ReassingBox;
