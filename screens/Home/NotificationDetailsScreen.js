@@ -112,7 +112,7 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
             </View>
         </Pressable>
 
-        <Pressable onPress={() => navigate.navigate("Attachment")}>
+        <Pressable onPress={() => navigate.navigate("Attachment", {NOTIFICATION_ID: NOTIFICATION_ID, LOOKUP_CODE})}>
             <View style={homeScreenStyle.notificationDetails.actionLink}>
                 <Text style={homeScreenStyle.notificationDetails.actionLinkText}>Attachments</Text>
                 <AntDesign style={homeScreenStyle.notificationDetails.arrowIcon} name="right" size={15} color="#2b9cd8" />

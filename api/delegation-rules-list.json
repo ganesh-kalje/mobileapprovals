@@ -568,5 +568,35 @@
                 "EMAIL_ADDRESS": "CIFAR12_WF_Dev@cable.comcast.com"
             }
         ]
+    },
+    "GetAttachmentDetails": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11260644, DateTime : 01/08/2023 10:42:16 PM",
+        "AttachmentDetailsOutput": [
+            {
+                "FILE_CONTENT_TYPE": "application/pdf",
+                "FILE_BINARY": null,
+                "DESCRIPTION": null,
+                "DOCUMENT_ID": "24646614",
+                "ENTITY_NAME": "REQ_HEADERS",
+                "FILE_NAME": "BBI 22111206 Q1 HRT 2023 TRAN Warren 1 NCS Roland.pdf",
+                "TITLE": null,
+                "NOTIFICATION_ID": 71097170,
+                "FILE_ID": "26910821",
+                "FILE_URL": null
+            },
+            {
+                "FILE_CONTENT_TYPE": "application/pdf",
+                "FILE_BINARY": null,
+                "DESCRIPTION": null,
+                "DOCUMENT_ID": "24646614",
+                "ENTITY_NAME": "REQ_HEADERS",
+                "FILE_NAME": "BBI 22111206 Q1 HRT 2023 TRAN Warren 2 NCS Roland.pdf",
+                "TITLE": null,
+                "NOTIFICATION_ID": 71097170,
+                "FILE_ID": "26910822",
+                "FILE_URL": null
+            }
+        ]
     }
 }
