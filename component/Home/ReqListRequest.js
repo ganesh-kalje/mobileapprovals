@@ -6,7 +6,8 @@ import { useState } from "react";
 import axios from 'axios';
 import AdditionalInfo from "./AdditionalInfo";
 
-const ListTemplate = ({ lineDetailObj, infoObj }) => {
+const ReqListRequest = ({ lineDetailObj, infoObj }) => {
+    
     const fyiflag = ''; // FYI_FLAG logic is pending
     const isGLCodeDisable = (infoObj.APPROVAL_TYPE_LOOKUP_CODE !== 'APINVAPR' || (fyiflag !== 'N')) ? true : false;
     const [additionalInfo, setAdditionalInfo] = useState([]);
@@ -59,38 +60,66 @@ const ListTemplate = ({ lineDetailObj, infoObj }) => {
                 <Text style={homeScreenStyle.lineScreen.valueStyle}>{DisplayHelper.amountFormat(lineDetailObj.AMOUNT)}</Text>
             </View>}
 
+            {DisplayHelper.isValid(lineDetailObj.CATEGORY) && <View style={[homeScreenStyle.lineScreen.row]}>
+                <Text style={homeScreenStyle.lineScreen.labelStyle}>Category</Text>
+                <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.CATEGORY}</Text>
+            </View>}
+
+            {DisplayHelper.isValid(lineDetailObj.SHIP_TO_LOCATION) && <View style={[homeScreenStyle.lineScreen.row]}>
+                <Text style={homeScreenStyle.lineScreen.labelStyle}>Ship to Location</Text>
+                <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.SHIP_TO_LOCATION}</Text>
+            </View>}
+
             {DisplayHelper.isValid(lineDetailObj.DESCRIPTION) && <View style={[homeScreenStyle.lineScreen.row]}>
                 <Text style={homeScreenStyle.lineScreen.labelStyle}>Description</Text>
                 <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.DESCRIPTION}</Text>
             </View>}
 
+            {DisplayHelper.isValid(lineDetailObj.EXCESS_FLAG) && <View style={[homeScreenStyle.lineScreen.row]}>
+                <Text style={homeScreenStyle.lineScreen.labelStyle}>Excess Available</Text>
+                <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.EXCESS_FLAG}</Text>
+            </View>}
+
+            {DisplayHelper.isValid(lineDetailObj.EXCESS_REASON) && <View style={[homeScreenStyle.lineScreen.row]}>
+                <Text style={homeScreenStyle.lineScreen.labelStyle}>Reason</Text>
+                <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.EXCESS_REASON}</Text>
+            </View>}
+
+            
+
             {contentShowHide && <>
-                {DisplayHelper.isValid(lineDetailObj.PO_NUM) && <View style={[homeScreenStyle.lineScreen.row]}>
-                    <Text style={homeScreenStyle.lineScreen.labelStyle}>PO#</Text>
-                    <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.PO_NUM}</Text>
-                </View>}
+                {DisplayHelper.isValid(lineDetailObj.ITEM_NUMBER) && <div className="action-item">
+                    <label>Item #</label>
+                    <div className="value">{lineDetailObj.ITEM_NUMBER}</div>
+                </div>}
 
-                {DisplayHelper.isValid(lineDetailObj.UOM) && <View style={[homeScreenStyle.lineScreen.row]}>
-                    <Text style={homeScreenStyle.lineScreen.labelStyle}>UOM#</Text>
-                    <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.UOM}</Text>
-                </View>}
+                {DisplayHelper.isValid(lineDetailObj.QUANTITY) && <div className="action-item">
+                    <label>Quantity</label>
+                    <div className="value">{lineDetailObj.QUANTITY}</div>
+                </div>}
 
-                {DisplayHelper.isValid(lineDetailObj.QUANTITY) && <View style={[homeScreenStyle.lineScreen.row]}>
-                    <Text style={homeScreenStyle.lineScreen.labelStyle}>QUANTITY#</Text>
-                    <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.QUANTITY}</Text>
-                </View>}
+                {DisplayHelper.isValid(lineDetailObj.SOW) && <div className="action-item">
+                    <label>SOW</label>
+                    <div className="value">{lineDetailObj.SOW}</div>
+                </div>}
 
-                {DisplayHelper.isValid(lineDetailObj.UNIT_PRICE) && <View style={[homeScreenStyle.lineScreen.row]}>
-                    <Text style={homeScreenStyle.lineScreen.labelStyle}>UNIT PRICE</Text>
-                    <Text style={homeScreenStyle.lineScreen.valueStyle}>{lineDetailObj.UNIT_PRICE}</Text>
-                </View>}
+                {DisplayHelper.isValid(lineDetailObj.SERVICE_START_DATE) && <div className="action-item">
+                    <label>Service Start Date</label>
+                    <div className="value">{DisplayHelper.getMonDateFromISO(lineDetailObj.SERVICE_START_DATE)}</div>
+                </div>}
+
+                {DisplayHelper.isValid(lineDetailObj.SERVICE_END_DATE) && <div className="action-item">
+                    <label>Service End Date</label>
+                    <div className="value">{DisplayHelper.getMonDateFromISO(lineDetailObj.SERVICE_END_DATE)}</div>
+                </div>}
                 
                 <AdditionalInfo isGLCodeDisable={isGLCodeDisable} additionalInfo={additionalInfo} ></AdditionalInfo>
             </>}
+
             {contentShowHide === false && <Pressable onPress={contentShowHideHandler} style={[homeScreenStyle.lineScreen.row, {flex: 1, justifyContent: 'center', padding: 0, margin: 0}]}>
                 <AntDesign name="down" size={20} color="#00619a" />
             </Pressable>}
         </View>
     </>)
 }
-export default ListTemplate;
+export default ReqListRequest;

@@ -6,6 +6,8 @@ import React, { useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLineRecords } from "../../store/notiications";
 import ListTemplate from "../../component/Home/ListTemplate";
+import ReqListRequest from "../../component/Home/ReqListRequest";
+import ChangeLineList from "../../component/Home/ChangeLineList";
 
 
 const initialRequest = { PAGE_NUMBER: 1, lines: [], selectedLines: '' };
@@ -63,10 +65,11 @@ const LinesScreen = ({ route, navigation }) => {
     }, [LOOKUP_CODE, NOTIFICATION_ID, loggedInNTID, NOTIFICATION_STATUS, pageNumber]);
 
     const renderItem = ({ item }) => {
+        console.log(LOOKUP_CODE);
         return <View style={{backgroundColor: '#fff'}}>
             {LOOKUP_CODE === 'APINVAPR' && <ListTemplate infoObj={infoObj} lineDetailObj={item}></ListTemplate>}
-            {LOOKUP_CODE === 'REQAPPRV' && <></>}
-            {(LOOKUP_CODE === 'POREQCHA' || LOOKUP_CODE === 'PORPOCHA') && <></>}
+            {LOOKUP_CODE === 'REQAPPRV' && <ReqListRequest infoObj={infoObj} lineDetailObj={item}></ReqListRequest>}
+            {(LOOKUP_CODE === 'POREQCHA' || LOOKUP_CODE === 'PORPOCHA') && <ChangeLineList infoObj={infoObj} lineDetailObj={item}></ChangeLineList>}
         </View>
     }
 
