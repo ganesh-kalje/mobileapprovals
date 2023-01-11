@@ -35,6 +35,7 @@ const rightButtonsContainerStyle = {
 }
 
 export const StateSearchScreen = memo(({ route, navigation }) => {
+    const { P_INVOICE_ID, P_INVOICE_DIST_NUM, P_STATE_SERV_CODE_OLD, P_INVOICE_LINE_NUM } = (route.params !== null) ? route.params : {};
     const [loading, setLoading] = useState(false)
     const [suggestionsList, setSuggestionsList] = useState(null)
     const [selectedItem, setSelectedItem] = useState(null)
@@ -86,11 +87,9 @@ export const StateSearchScreen = memo(({ route, navigation }) => {
             return
         }
         
-        /**const postObj = {
-            P_INVOICE_ID: location.state.P_INVOICE_ID, P_INVOICE_DIST_NUM: location.state.P_INVOICE_DIST_NUM,
-            P_STATE_SERV_CODE_OLD: location.state.P_STATE_SERV_CODE_OLD, P_STATE_SERV_CODE_NEW: selectedState,
-            P_INVOICE_LINE_NUM: location.state.P_INVOICE_LINE_NUM
-        }**/
+        const postObj = { P_INVOICE_ID, P_INVOICE_DIST_NUM, P_STATE_SERV_CODE_OLD, P_STATE_SERV_CODE_NEW: selectedItem, P_INVOICE_LINE_NUM }
+        console.log(postObj);
+        navigation.goBack(null);
         // updateState(postObj);
     }
 

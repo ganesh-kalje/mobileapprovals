@@ -35,7 +35,7 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
         DOCUMENT_ID = approvalDetails.DOCUMENT_ID
     } 
     
-    const header = (LOOKUP_CODE === 'APINVAPR' && approvalDetails !== null) ? approvalDetails.INVOICE_NUMBER : SENDER;
+    const header = (LOOKUP_CODE === 'APINVAPR' && approvalDetails !== null) ? approvalDetails.INVOICE_NUMBER  : SENDER;
     const subHeader = (LOOKUP_CODE === 'CMAPPR') ? NOTIFICATION_ID : '';
 
     const NOTIFICATION_STATUS = (FYI_FLAG === "Y") ? "CLOSED" : "OPEN";
@@ -115,13 +115,6 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
         <Pressable onPress={() => navigate.navigate("Attachment", {NOTIFICATION_ID: NOTIFICATION_ID, LOOKUP_CODE})}>
             <View style={homeScreenStyle.notificationDetails.actionLink}>
                 <Text style={homeScreenStyle.notificationDetails.actionLinkText}>Attachments</Text>
-                <AntDesign style={homeScreenStyle.notificationDetails.arrowIcon} name="right" size={15} color="#2b9cd8" />
-            </View>
-        </Pressable>
-
-        <Pressable onPress={() => navigate.navigate("StateSearch")}>
-            <View style={homeScreenStyle.notificationDetails.actionLink}>
-                <Text style={homeScreenStyle.notificationDetails.actionLinkText}>State Search</Text>
                 <AntDesign style={homeScreenStyle.notificationDetails.arrowIcon} name="right" size={15} color="#2b9cd8" />
             </View>
         </Pressable>

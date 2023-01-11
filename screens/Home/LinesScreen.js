@@ -31,7 +31,7 @@ const LinesScreen = ({ route, navigation }) => {
     const loggedInNTID = useSelector((state) => state.auth.loggedInNTID);
     const dispatchLines = useDispatch();
     const lineRecords = useSelector((state) => state.notification.lineRecords);
-    
+
 
 
 
@@ -48,7 +48,7 @@ const LinesScreen = ({ route, navigation }) => {
     const pageNumber = requestState.PAGE_NUMBER;
     const nextButtonHandler = () => dispatch({ type: "NEXT" });
     const preButtonHandler = () => dispatch({ type: "PRE" });
-    
+
 
 
     React.useEffect(() => {
@@ -63,20 +63,17 @@ const LinesScreen = ({ route, navigation }) => {
     }, [LOOKUP_CODE, NOTIFICATION_ID, loggedInNTID, NOTIFICATION_STATUS, pageNumber]);
 
     const renderItem = ({ item }) => {
-        return <>
+        return <View style={{backgroundColor: '#fff'}}>
             {LOOKUP_CODE === 'APINVAPR' && <ListTemplate infoObj={infoObj} lineDetailObj={item}></ListTemplate>}
             {LOOKUP_CODE === 'REQAPPRV' && <></>}
             {(LOOKUP_CODE === 'POREQCHA' || LOOKUP_CODE === 'PORPOCHA') && <></>}
-        </>
+        </View>
     }
 
 
-    return (<View style={[homeScreenStyle.lineScreen.card, homeScreenStyle.lineScreen.shadowProp, { flex: 1 }]}>
+    return (<SafeAreaView style={[homeScreenStyle.lineScreen.card, homeScreenStyle.lineScreen.shadowProp, { flex: 1 }]}>
         <NotificationHeader header={header} subHeader={subHeader} SUBJECT={SUBJECT}  ></NotificationHeader>
-
-        <SafeAreaView>
-            <FlatList data={lineRecords} renderItem={renderItem} keyExtractor={item => item.LINE_NUMBER} />
-        </SafeAreaView>
+        <FlatList data={lineRecords} renderItem={renderItem} keyExtractor={item => item.LINE_NUMBER} />
 
         {!(requestState.PAGE_NUMBER === 1 && lineRecords.length < 20) && <View style={{ flexDirection: 'row' }}>
             <Pressable disabled={requestState.PAGE_NUMBER === 1} onPress={() => { preButtonHandler() }} style={{ width: '50%', backgroundColor: '#2a2c2d', padding: 10, borderWidth: 0.5, borderTopLeftRadius: 20, borderBottomLeftRadius: 20, alignItems: 'center' }}>
@@ -87,7 +84,7 @@ const LinesScreen = ({ route, navigation }) => {
                 <Text style={{ color: '#fff' }}>Next</Text>
             </Pressable>
         </View>}
-    </View>)
+    </SafeAreaView>)
 }
 
 export default LinesScreen;
