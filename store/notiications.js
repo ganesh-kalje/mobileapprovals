@@ -28,7 +28,7 @@ export const fetchApprovalList = createAsyncThunk('posts/fetchApprovalList', asy
 /**
  * Get approval Details
  */
- export const fetchApprovalDetails = createAsyncThunk('posts/fetchApprovalDetails', async (postObj) => {
+export const fetchApprovalDetails = createAsyncThunk('posts/fetchApprovalDetails', async (postObj) => {
   // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationDetails/CIFANotificationDetailsRest/GetNotificationDetails`;
   const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetNotificationDetails.json';
   const response = await axios.get(urlToCall);
@@ -39,7 +39,7 @@ export const fetchApprovalList = createAsyncThunk('posts/fetchApprovalList', asy
 /**
  * Get RejectionReason list
  */
- export const fetchRejectionReasonList = createAsyncThunk('posts/fetchRejectionReasonList', async (postObj) => {
+export const fetchRejectionReasonList = createAsyncThunk('posts/fetchRejectionReasonList', async (postObj) => {
   // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationApproval/CIFANotificationApprovalRest/GetRejectionReason`;
   const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetRejectionReason.json';
   // const response = await axios.post(urlToCall, postObj);
@@ -54,11 +54,22 @@ export const fetchLineRecords = createAsyncThunk('posts/fetchLineRecords', async
   // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationDetails/CIFANotificationDetailsRest/GetLineDetails`;
   const urlToCall = 'https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetLineDetails.json';
   const response = await axios.get(urlToCall);
- 
+
   // const response = await axios.post(urlToCall, postObj);
   return (response.STATUS.toLowerCase() === 'success' && response.LineDetailsOutput) ? response.LineDetailsOutput : [];
 });
 
+/**
+ * Get state of service list
+ */
+export const fetchStateOfService = createAsyncThunk('posts/fetchStateOfService', async (loggedInNTID) => {
+  const stateOfServiceUrl = `https://mobile-approval-a77da-default-rtdb.firebaseio.com/GetStateOfService.json`;
+
+  // const stateOfServiceUrl = `${api.getAPIEndPoint()}CIFANotificationDetails/CIFANotificationDetailsRest/GetStateOfServices`;
+  // const response = await axios.post(stateOfServiceUrl, {USER_NAME: loggedInNTID});
+  const response = await axios.get(stateOfServiceUrl);
+  return (response.STATUS.toLowerCase() === 'success' && response.Getstateofservicesoutput) ? response.Getstateofservicesoutput : [];
+});
 
 
 const initialAuthState = {
@@ -69,7 +80,8 @@ const initialAuthState = {
   approvalList: [],
   approvalDetails: [],
   lineRecords: [],
-  rejectionReason: {lookupCode: '', rejectionReasonList: []}
+  rejectionReason: { lookupCode: '', rejectionReasonList: [] },
+  statesOfService: []
 };
 
 const notificationSlice = createSlice({
@@ -80,7 +92,7 @@ const notificationSlice = createSlice({
       state.notifications = [...action.payload.fyiItems, ...action.payload.actionableItems, ...action.payload.allItems];
     },
     clearData(state) {
-      state =  initialAuthState
+      state = initialAuthState
     },
   },
   extraReducers(builder) {
@@ -90,7 +102,7 @@ const notificationSlice = createSlice({
       state.notificationStatus = state.fyIflag === 'N' ? "OPEN" : "CLOSED";
       state.NTID = action.meta.arg.NTID;
     }).addCase(fetchApprovalList.fulfilled, (state, action) => {
-      const approvalList = {lookupCode: action.meta.arg.APPROVAL_TYPE_LOOKUP_CODE, approvalList: action.payload, FYI_FLAG: action.meta.arg.FYI_FLAG};
+      const approvalList = { lookupCode: action.meta.arg.APPROVAL_TYPE_LOOKUP_CODE, approvalList: action.payload, FYI_FLAG: action.meta.arg.FYI_FLAG };
       state.approvalList.push(approvalList);
     }).addCase(fetchApprovalDetails.fulfilled, (state, action) => {
       state.approvalDetails.push(action.payload[0]);
@@ -99,6 +111,8 @@ const notificationSlice = createSlice({
       state.rejectionReason.rejectionReasonList = action.payload;
     }).addCase(fetchLineRecords.fulfilled, (state, action) => {
       state.lineRecords = action.payload;
+    }).addCase(fetchStateOfService.fulfilled, (state, action) => {
+      state.statesOfService = action.payload;
     })
   }
 });
@@ -112,20 +126,21 @@ export const selectFYIFlag = (state) => state.notification.fyIflag;
 
 export const selectRejectionReason = (state) => state.notification.rejectionReason;
 
+export const stateOfServiceSelector = (state) => state.notification.statesOfService;
 
 
-export const selectReportId = createSelector([selectNotification, (selectNotification, category) => category], 
+export const selectReportId = createSelector([selectNotification, (selectNotification, category) => category],
   (notification, category) => {
     const selectedNotification = notification.find((current) => current.APPROVAL_TYPE_LOOKUP_CODE === category);
     return (selectedNotification) ? selectedNotification.ReportID : null;
-});
+  });
 
 const selectApprovalDetailsList = (state) => state.notification.approvalDetails;
-export const selectApprovalDetails = createSelector([selectApprovalDetailsList, (selectApprovalDetailsList, notificationId) => notificationId], 
+export const selectApprovalDetails = createSelector([selectApprovalDetailsList, (selectApprovalDetailsList, notificationId) => notificationId],
   (detailList, notificationId) => {
     const selectedApprovalDetails = detailList.find((current) => current && current !== null && current.NOTIFICATION_ID === notificationId);
     return (selectedApprovalDetails) ? selectedApprovalDetails : null;
-});
+  });
 
 export const selectApprovalList = (state, lookupCode) => {
   return state.notification.approvalList.find((current) => current.lookupCode === lookupCode);

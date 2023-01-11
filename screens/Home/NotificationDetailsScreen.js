@@ -119,6 +119,13 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
             </View>
         </Pressable>
 
+        <Pressable onPress={() => navigate.navigate("StateSearch")}>
+            <View style={homeScreenStyle.notificationDetails.actionLink}>
+                <Text style={homeScreenStyle.notificationDetails.actionLinkText}>State Search</Text>
+                <AntDesign style={homeScreenStyle.notificationDetails.arrowIcon} name="right" size={15} color="#2b9cd8" />
+            </View>
+        </Pressable>
+
         <Actions LOOKUP_CODE={LOOKUP_CODE} NOTIFICATION_ID={NOTIFICATION_ID} approvalDetails={approvalDetails}></Actions>
     </View>
     

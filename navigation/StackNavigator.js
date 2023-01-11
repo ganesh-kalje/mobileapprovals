@@ -18,6 +18,7 @@ import NotificationDetailsCarScreen from "../screens/Home/NotificationDetailsCar
 import Reassign from "../screens/Home/Reassign";
 import RequestInfo from "../screens/Home/RequestInfo";
 import SearchUserRoot from "./SearchUserNavigator";
+import StateSearchScreen from "../screens/Home/StateSearchScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -49,6 +50,7 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Reassign" component={Reassign} options={{ headerShown: true, title: 'Reassign', headerTitleAlign: 'center' }} />
             <Stack.Screen name="RequestInfo" component={RequestInfo} options={{ headerShown: true, title: 'RequestInfo', headerTitleAlign: 'center' }} />
             <Stack.Screen name="SearchUserRoot" component={SearchUserRoot} options={{ headerShown: false }} />
+            <Stack.Screen name="StateSearch" component={StateSearchScreen} options={{ headerShown: true, title: 'Select State of Service', headerTitleAlign: 'center' }} />
         </Stack.Navigator>
     );
 }

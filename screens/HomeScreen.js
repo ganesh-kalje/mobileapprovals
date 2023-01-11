@@ -3,7 +3,7 @@ import { View, ScrollView, SafeAreaView, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from '../component/Home/Filter';
 import NotificationCard from "../component/Home/NotificationCard";
-import { fetchNotifications, selectNotification, selectFYIFlag } from "../store/notiications";
+import { fetchStateOfService, fetchNotifications, selectNotification, selectFYIFlag } from "../store/notiications";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -29,6 +29,7 @@ const HomeScreen = ({ navigation }) => {
         if (notifications === null) {
             dispatch(fetchNotifications({ NTID: loggedInNTID, FYI_FLAG: fyIFlag, SourceSystem: "WORKLIST" }));
         }
+        dispatch(fetchStateOfService(loggedInNTID));
     }, [fyIFlag, loggedInNTID, notifications, dispatch])
 
     const renderItem = ({ item }) => (
