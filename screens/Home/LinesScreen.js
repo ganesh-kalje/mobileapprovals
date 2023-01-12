@@ -65,7 +65,6 @@ const LinesScreen = ({ route, navigation }) => {
     }, [LOOKUP_CODE, NOTIFICATION_ID, loggedInNTID, NOTIFICATION_STATUS, pageNumber]);
 
     const renderItem = ({ item }) => {
-        console.log(LOOKUP_CODE);
         return <View style={{backgroundColor: '#fff'}}>
             {LOOKUP_CODE === 'APINVAPR' && <ListTemplate infoObj={infoObj} lineDetailObj={item}></ListTemplate>}
             {LOOKUP_CODE === 'REQAPPRV' && <ReqListRequest infoObj={infoObj} lineDetailObj={item}></ReqListRequest>}

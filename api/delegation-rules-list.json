@@ -773,5 +773,91 @@
                 "GL_CODE_COMBINATION": "100.000075.00.20105.000.000.000.000"
             }
         ]
+    },
+    "GetActionHistory": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11270027, DateTime : 01/12/2023 04:54:23 AM",
+        "ActionHistoryOutput": [
+            {
+                "SEQUENCE_NUM": 1,
+                "ACTION_DATE": "2022-11-17T19:29:03.000-05:00",
+                "ACTION_TAKEN_BY": "NAZARIO, RAFAEL",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 2,
+                "ACTION_DATE": "2022-11-21T09:07:04.000-05:00",
+                "ACTION_TAKEN_BY": "NAZARIO, RAFAEL",
+                "ACTION": "Approved",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 8880.11
+            },
+            {
+                "SEQUENCE_NUM": 3,
+                "ACTION_DATE": "2022-11-21T09:07:05.000-05:00",
+                "ACTION_TAKEN_BY": "ELLINGTON, BEVERLY",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 4,
+                "ACTION_DATE": "2022-11-21T09:07:06.000-05:00",
+                "ACTION_TAKEN_BY": "FITT, JASON",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 5,
+                "ACTION_DATE": "2022-11-21T09:07:06.000-05:00",
+                "ACTION_TAKEN_BY": "WRIGHT, PHILIP",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 6,
+                "ACTION_DATE": "2022-11-21T09:07:07.000-05:00",
+                "ACTION_TAKEN_BY": "MALANTIS, BRIAN",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 7,
+                "ACTION_DATE": "2022-11-21T09:07:07.000-05:00",
+                "ACTION_TAKEN_BY": "SMITH, ASHLEY",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 8,
+                "ACTION_DATE": "2022-11-21T09:07:08.000-05:00",
+                "ACTION_TAKEN_BY": "HORNE, ERICKA",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 9,
+                "ACTION_DATE": "2022-11-21T09:07:08.000-05:00",
+                "ACTION_TAKEN_BY": "LITTLE, KATIE",
+                "ACTION": "Sent",
+                "COMMENTS": null,
+                "AMOUNT_REVIEWED": 0
+            },
+            {
+                "SEQUENCE_NUM": 10,
+                "ACTION_DATE": "2023-01-10T06:29:51.000-05:00",
+                "ACTION_TAKEN_BY": "TUCKER, PHILICIA",
+                "ACTION": "Delegated",
+                "COMMENTS": "To: TUCKER, PHILICIA     With Comment:None",
+                "AMOUNT_REVIEWED": 8880.11
+            }
+        ]
     }
 }

@@ -105,7 +105,7 @@ const NotificationDetailsScreen = ({ route, navigation }) => {
             </View>
         </Pressable>
 
-        <Pressable onPress={() => navigate.navigate("ActionHistory")}>
+        <Pressable onPress={() => navigate.navigate("ActionHistory", actionHistoryState)}>
             <View style={homeScreenStyle.notificationDetails.actionLink}>
                 <Text style={homeScreenStyle.notificationDetails.actionLinkText}>Action History</Text>
                 <AntDesign style={homeScreenStyle.notificationDetails.arrowIcon} name="right" size={15} color="#2b9cd8" />
