@@ -25,6 +25,17 @@ const AdditionalInfo = (state) => {
         navigate.navigate("StateSearch", stateData)
     }
 
+    const changeGLCodeHandler = (infoObj) => {
+        const stateObj = {
+            selectedGlCode: infoObj.GL,
+            INVOICE_LINE_NUM: infoObj.INVOICE_LINE_NUM,
+            INVOICE_ID: (infoObj.INVOICE_ID) ? infoObj.INVOICE_ID : null,
+            DISTRIBUTION_NUM: (infoObj.DISTRIBUTION_NUM) ? infoObj.DISTRIBUTION_NUM : null,
+            DIST_CODE_COMBINATION_ID: (infoObj.DIST_CODE_COMBINATION_ID) ? infoObj.DIST_CODE_COMBINATION_ID : null
+        }
+        navigate.navigate("GLCodeSearch", stateObj);
+    }
+
     
     const renderItem = ({ item }) => {
         
@@ -41,7 +52,7 @@ const AdditionalInfo = (state) => {
 
             {DisplayHelper.isValid(item.GL) && <View style={[homeScreenStyle.lineScreen.row]}>
                 <Text style={homeScreenStyle.lineScreen.labelStyle}>Charge Account</Text>
-                <Pressable style={{ borderWidth: 1, borderColor: '#2B9CD8', padding: 5, width: '70%' }}>
+                <Pressable onPress={() => changeGLCodeHandler(item)} style={{ borderWidth: 1, borderColor: '#2B9CD8', padding: 5, width: '70%' }}>
                     <Text style={homeScreenStyle.lineScreen.valueStyle}>{item.GL}</Text>
                 </Pressable>
             </View>}

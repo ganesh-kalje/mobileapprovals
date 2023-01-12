@@ -687,5 +687,91 @@
                 "INVOICE_LINE_NUM": "1"
             }
         ]
+    },
+    "GetGlCode": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Records Extracted Successfully. Flow Id :11241983, DateTime : 01/11/2023 11:52:07 PM",
+        "GlCodeListOutput": [
+            {
+                "CODE_COMBINATION_ID": 1000,
+                "GL_CODE_COMBINATION": "100.000020.00.32000.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1002,
+                "GL_CODE_COMBINATION": "100.000075.00.33100.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1003,
+                "GL_CODE_COMBINATION": "100.000075.00.25200.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1004,
+                "GL_CODE_COMBINATION": "100.000075.00.61030.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1005,
+                "GL_CODE_COMBINATION": "100.000075.00.20207.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1006,
+                "GL_CODE_COMBINATION": "100.000310.00.16910.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1007,
+                "GL_CODE_COMBINATION": "100.000310.00.56120.100.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1008,
+                "GL_CODE_COMBINATION": "100.000310.00.56520.350.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1009,
+                "GL_CODE_COMBINATION": "100.000310.00.15000.000.000.000.700"
+            },
+            {
+                "CODE_COMBINATION_ID": 1011,
+                "GL_CODE_COMBINATION": "100.000310.00.20208.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1012,
+                "GL_CODE_COMBINATION": "100.000310.00.59140.100.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1433,
+                "GL_CODE_COMBINATION": "100.003289.00.99999.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1708,
+                "GL_CODE_COMBINATION": "100.000805.00.16922.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1709,
+                "GL_CODE_COMBINATION": "100.000805.00.56120.100.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1710,
+                "GL_CODE_COMBINATION": "100.000805.00.56520.350.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1711,
+                "GL_CODE_COMBINATION": "100.000805.00.15000.000.000.000.700"
+            },
+            {
+                "CODE_COMBINATION_ID": 1713,
+                "GL_CODE_COMBINATION": "100.000805.00.20208.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1714,
+                "GL_CODE_COMBINATION": "100.000805.00.59140.100.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1716,
+                "GL_CODE_COMBINATION": "100.000075.00.20001.000.000.000.000"
+            },
+            {
+                "CODE_COMBINATION_ID": 1717,
+                "GL_CODE_COMBINATION": "100.000075.00.20105.000.000.000.000"
+            }
+        ]
     }
 }
