@@ -9,11 +9,13 @@ export const fetchRules = createAsyncThunk('post/fetchRules', async (loggedInNTI
 })
 
 export const fetchItemsType = createAsyncThunk('posts/fetchItemTypes', async (loggedInNTID) => {
+    // const urlToCall = `${api.getAPIEndPoint()}CIFANotificationApproval/CIFANotificationApprovalRest/GetItemType`;
     const urlToCall = `https://mobile-approval-a77da-default-rtdb.firebaseio.com/itemTypes.json`;
     const postObjRules = { NTID: loggedInNTID };
     const response = await axios.get(urlToCall);
     return (response.STATUS.toLowerCase() === 'success' && response.OutputType) ? response.OutputType : []
 })
+
 
 const initialState = {
     approvalList: [],
