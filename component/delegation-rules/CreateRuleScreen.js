@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dropdown } from 'react-native-element-dropdown';
 import { TextInputMask } from 'react-native-masked-text'
 import { sessionDataActions } from '../../store/session-data';
+import { delegationRulesActions } from '../../store/delegation-rules';
 
 const initialRequest = {
     formObj: {
@@ -48,12 +49,14 @@ const reducer = (state, action) => {
     }
 };
 
-const CreateRuleScreen = () => {
+const CreateRuleScreen = ({ route, navigation }) => {
+    const[showDropDown, setShowDropDown] = useState(true);
+    const editObject = (route.params) ? route.params : null;
     const [resultSelector, dispatch] = useReducer(reducer, initialRequest);
     const rulesSelector = useSelector((state) => state.rules);
-    const editObject = rulesSelector.editObj;
+    const actionTypeSelector = useSelector((state) => state.rules.actionType);
+    // const editObject = rulesSelector.editObj;
     const approvalTypeList = rulesSelector.approvalList;
-    
     const [dateValidation, setDateValidtion] = useState({ isStartDateValid: true, isEndDateValid: true });
     const radio_props = [{ label: 'Delegate', value: 0 }];
     const dispatchCall = useDispatch();
@@ -61,11 +64,14 @@ const CreateRuleScreen = () => {
     const selectedSearchUser = useSelector((state) => state.sessionData.selectedSearchUser);
     const getSelectedUser = (userResult) => dispatch({ type: "UPDATE_FORM", payload: { value: userResult, formField: 'reassignUser' } });
 
+
+    // console.log(approvalTypeList);
+    const selectedItem = {LOOKUP_CODE: "POREQCHA", MEANING: "Requester Change Order Approval"}
     const handleFormChange = (event, formField) => {
         dispatch({ type: "UPDATE_FORM", payload: { value: event, formField } });
     }
 
-    const submitHandler = () => {
+   const submitHandler = () => {
         const isStartDateValid = moment(resultSelector.formObj.startDate, dateFormat, true);
         if (resultSelector.formObj.startDate === null || !isStartDateValid.isValid()) {
             console.error('Please enter valid start date.');
@@ -99,7 +105,7 @@ const CreateRuleScreen = () => {
             MESSAGE_TYPE: resultSelector.formObj.approvalDetails, MESSAGE_NAME: null,
             REASSIGN_NTID: selectedSearchUser.NTID, RULE_COMMENT: resultSelector.formObj.notes
         }
-        console.log(data);
+        // console.log(data);
         if(resultSelector.formObj.actionType === 'UPDATE') {
             data.MESSAGE_TYPE = '';
             data.RULE_ID = resultSelector.formObj.ruleId;
@@ -107,15 +113,20 @@ const CreateRuleScreen = () => {
         // submitRule(data);
     }
 
+
     useEffect(() => {
+        if(editObject !== null && actionTypeSelector === 'UPDATE') {
+            dispatch({ type: "EDIT_FORM", payload: editObject});
+        } else {
+            dispatch({ type: "RESET_FORM"});
+        }
        // dispatchCall(sessionDataActions.clearSelectedUser());
-    }, [dispatchCall]);
+    }, [editObject, dispatch]);
 
     return (
         <View style={delegationRuleStyle.createRuleScreen.container}>
-            <View style={{ marginBottom: 20 }}>
+            {actionTypeSelector === 'CREATE' && <View style={{ marginBottom: 20 }}>
                 <Text style={delegationRuleStyle.createRuleScreen.label}>Approval Type:</Text>
-
                 <Dropdown
                     style={[delegationRuleStyle.createRuleScreen.dropdown]}
                     itemTextStyle={{ fontSize: 14 }}
@@ -126,17 +137,23 @@ const CreateRuleScreen = () => {
                     maxHeight={300}
                     labelField="MEANING"
                     valueField="LOOKUP_CODE"
-                    placeholder={ '-Select-'}
-                    value={resultSelector.formObj.approvalDetails}
+                    placeholder={'-Select-'}
                     onChange={(event) => {
+                        console.log(event);
                         handleFormChange(event.LOOKUP_CODE, 'approvalDetails')
                     }}
                 />
-            </View>
+            </View>}
+
+            {actionTypeSelector === 'UPDATE' && <View style={{ marginBottom: 10 }}>
+                <Text style={delegationRuleStyle.createRuleScreen.label}>Approval Type:</Text>
+                <Text>{resultSelector.formObj.approvalDetails}</Text>
+            </View>}
 
             <View style={{ marginBottom: 20 }}>
                 <Text style={delegationRuleStyle.createRuleScreen.label}>*Start Date:</Text>
                 <TextInputMask
+                    value={resultSelector.formObj.startDate}
                     style={delegationRuleStyle.createRuleScreen.textInput}
                     placeholder={dateFormat}
                     type={'datetime'}
@@ -159,6 +176,7 @@ const CreateRuleScreen = () => {
             <View style={{ marginBottom: 20 }}>
                 <Text style={delegationRuleStyle.createRuleScreen.label}>*End Date:</Text>
                 <TextInputMask
+                    value={resultSelector.formObj.endDate}
                     style={delegationRuleStyle.createRuleScreen.textInput}
                     placeholder={dateFormat}
                     type={'datetime'}
@@ -180,7 +198,7 @@ const CreateRuleScreen = () => {
 
             <View>
                 <Text style={delegationRuleStyle.createRuleScreen.label}>Notes:</Text>
-                <TextInput multiline={true} onChangeText={(event) => handleFormChange(event, 'notes')}
+                <TextInput multiline={true} onChangeText={(event) => handleFormChange(event, 'notes')} value={resultSelector.formObj.notes}
                     numberOfLines={Platform.OS === 'ios' ? null : 5}
                     minHeight={(Platform.OS === 'ios' && 5) ? (20 * 5) : null}
                     style={delegationRuleStyle.createRuleScreen.textArea} />
