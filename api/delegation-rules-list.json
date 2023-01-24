@@ -859,5 +859,132 @@
                 "AMOUNT_REVIEWED": 8880.11
             }
         ]
+    },
+    "GetDynamicReportCar": {
+        "STATUS": "SUCCESS",
+        "STATUS_MESSAGE": "Report fetched successfully.",
+        "ROW": [
+            {
+                "TRANSACTION_DATA": {
+                    "APEXP": {
+                        "TRANSACTION_HEADER": {
+                            "APPROVER_NAME": "MIGNOT, NICOLAS",
+                            "TO_USER": "TUCKER, PHILICIA",
+                            "TRANSACTION_LINE": [
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2116,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "Y",
+                                    "RECEIPT_AMOUNT": "10.50 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "N"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2117,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "Y",
+                                    "RECEIPT_AMOUNT": "5.60 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "N"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2118,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "N",
+                                    "RECEIPT_AMOUNT": "50.00 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "Y"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2119,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "Y",
+                                    "RECEIPT_AMOUNT": "8.00 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "N"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2120,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "N",
+                                    "RECEIPT_AMOUNT": "23.50 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "Y"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2121,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "N",
+                                    "RECEIPT_AMOUNT": "149.00 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "Y"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Golf Fess - Alex Hodge WBD",
+                                    "LINE_NUM": 2122,
+                                    "START_DATE": "10-Aug-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "N",
+                                    "RECEIPT_AMOUNT": "80.00 GBP",
+                                    "MERCHANT_NAME": "THE ADDINGTON GOLF CLU",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "Y"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Meals - Business",
+                                    "JUSTIFICATION": "Expenses 2022 5",
+                                    "LINE_NUM": 2401,
+                                    "START_DATE": "07-Jul-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "N",
+                                    "RECEIPT_AMOUNT": "380.31 GBP",
+                                    "MERCHANT_NAME": "HOUSE OF HO",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "Y"
+                                },
+                                {
+                                    "EXPENSE_TYPE": "Entertainment – After Work",
+                                    "JUSTIFICATION": "Barry John C4",
+                                    "LINE_NUM": 2492,
+                                    "START_DATE": "22-Jun-2022",
+                                    "PAYMENT_METHOD": "Credit Card",
+                                    "RECEIPT_MISSING": "N",
+                                    "RECEIPT_AMOUNT": "21.63 GBP",
+                                    "MERCHANT_NAME": "BAR MAJESTIC",
+                                    "ORIGINAL_RECEIPT_REQUIRED": "Y"
+                                }
+                            ],
+                            "SUBJECT": "Expense EXP49850817 for CARAS, JAMIE CRAIG (728.54 GBP)",
+                            "PURPOSE": "Expenses 2022 5",
+                            "EXPENSE_DATES": "22-Jun-2022-10-Aug-2022",
+                            "FROM_USER": "MIGNOT, NICOLAS",
+                            "COST_CENTER": "009836",
+                            "EXPENSE_REPORT_FOR": "TUCKER, PHILICIA",
+                            "TOTAL_AMOUNT": "728.54 GBP",
+                            "_NOTIFICATION_ID": 71110925,
+                            "NAME": "CARAS, JAMIE CRAIG (73000044)"
+                        }
+                    }
+                },
+                "@num": 1
+            }
+        ]
     }
 }

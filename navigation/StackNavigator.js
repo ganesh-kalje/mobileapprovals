@@ -20,6 +20,8 @@ import RequestInfo from "../screens/Home/RequestInfo";
 import SearchUserRoot from "./SearchUserNavigator";
 import StateSearchScreen from "../screens/Home/StateSearchScreen";
 import GlCodeSearch from "../screens/Home/GlCodeSearch";
+import LineCarScreen from "../screens/Home/cars/LinesCarScreen";
+import LineListCar from "../screens/Home/cars/LineListCar";
 
 
 const Stack = createNativeStackNavigator();
@@ -53,6 +55,8 @@ const MainStackNavigator = () => {
             <Stack.Screen name="SearchUserRoot" component={SearchUserRoot} options={{ headerShown: false }} />
             <Stack.Screen name="StateSearch" component={StateSearchScreen} options={{ headerShown: true, title: 'Select State of Service', headerTitleAlign: 'center' }} />
             <Stack.Screen name="GLCodeSearch" component={GlCodeSearch} options={{ headerShown: true, title: 'Search Gl Code', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="LinesCar" component={LineCarScreen} options={{ headerShown: true, title: 'Lines', headerTitleAlign: 'center' }} />
+            <Stack.Screen name="LineListCar" component={LineListCar} options={{ headerShown: true, title: 'Lines', headerTitleAlign: 'center' }} />
         </Stack.Navigator>
     );
 }
